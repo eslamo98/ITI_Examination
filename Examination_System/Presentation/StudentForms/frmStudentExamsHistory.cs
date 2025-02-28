@@ -55,12 +55,15 @@ namespace Examination_System.Presentation
         }
         private void addResult()
         {
-            DataGridViewButtonColumn showResultColumn = new DataGridViewButtonColumn();
-            showResultColumn.Name = "Col_Result";
-            showResultColumn.HeaderText = "Show Result";
-            showResultColumn.Text = "Show Result";
-            showResultColumn.UseColumnTextForButtonValue = true;
-            dgvExamsHistory.Columns.Add(showResultColumn);
+            if (!dgvExamsHistory.Columns.Contains("Col_Result"))
+            {
+                DataGridViewButtonColumn showResultColumn = new DataGridViewButtonColumn();
+                showResultColumn.Name = "Col_Result";
+                showResultColumn.HeaderText = "Show Result";
+                showResultColumn.Text = "Show Result";
+                showResultColumn.UseColumnTextForButtonValue = true;
+                dgvExamsHistory.Columns.Add(showResultColumn);
+            }
         }
 
         private void frmStudentExamsHistory_Load_1(object sender, EventArgs e)

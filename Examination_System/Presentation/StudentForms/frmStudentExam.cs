@@ -100,25 +100,33 @@ namespace Examination_System.Presentation
 
         private void dgvStudentExams_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0 || dgvStudentExams.Columns[e.ColumnIndex].Name != "Col_ExamAction")
+            // Ensure the click is on a valid row and the "Col_ExamAction" column
+            if (e.RowIndex < 0 || dgvStudentExams.Columns[e.ColumnIndex]?.Name != "Col_ExamAction")
                 return;
 
-            string actionText = dgvStudentExams.Rows[e.RowIndex].Cells["Col_ExamAction"].Value?.ToString();
+            // Get the value of the "Col_ExamAction" cell in the clicked row
+            string actionText = dgvStudentExams.Rows[e.RowIndex].Cells["Col_ExamAction"]?.Value?.ToString();
 
+            // Check if the action is "Open Exam"
             if (actionText == "Open Exam")
             {
-                if (dgvStudentExams.Rows[e.RowIndex].Cells["Id"].Value == null)
+                // Ensure the "Id" column exists and has a value
+                if (dgvStudentExams.Rows[e.RowIndex].Cells["Id"]?.Value == null)
                 {
                     MessageBox.Show("Exam ID is missing.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                int examID = Convert.ToInt32(dgvStudentExams.Rows[e.RowIndex].Cells["Id"].Value);
-                frmExam examForm = new frmExam(examID, stdID);
+                // Retrieve the Exam ID from the "Id" column
+                int examID = Convert.ToInt32(dgvStudentExams.Rows[e.RowIndex].Cells["Id"]?.Value);
+
+                // Open the exam form with the retrieved Exam ID and the student ID (stdID)
+                frmShowStudentExam examForm = new frmShowStudentExam(stdID, examID);
                 examForm.ShowDialog();
             }
             else
             {
+                // If the action is not "Open Exam", show a message
                 MessageBox.Show("The exam is not available.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

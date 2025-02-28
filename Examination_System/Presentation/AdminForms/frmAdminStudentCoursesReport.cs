@@ -49,7 +49,7 @@ namespace Examination_System.Presentation.AdminForms
                 if(e.RowIndex >=0 && dgv_student_courses.Columns[e.ColumnIndex].Name == "View Exams")
                 {
                     int courseId = (int)dgv_student_courses.Rows[e.RowIndex].Cells["Id"].Value;
-                    new frmAdminStudentExams(studentId, courseId).Show();
+                    //new frmAdminStudentExams(studentId, courseId).Show();
                 }
             }
             catch (Exception ex)

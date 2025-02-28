@@ -26,9 +26,9 @@ namespace Examination_System
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmAdminProfile a = new frmAdminProfile();
-            a.Show();
+            //this.Hide();
+            //frmAdminProfile a = new frmAdminProfile();
+            //a.Show();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

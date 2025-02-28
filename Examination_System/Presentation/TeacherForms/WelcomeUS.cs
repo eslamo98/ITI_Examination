@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Examination_System.Presentation
+namespace Examination_System.Presentation.TeacherForms
 {
-    public partial class frmAdminReport1 : Form
+    public partial class WelcomeUS: UserControl
     {
-        public frmAdminReport1()
+        public WelcomeUS()
         {
             InitializeComponent();
         }

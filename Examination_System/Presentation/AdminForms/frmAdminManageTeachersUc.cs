@@ -31,10 +31,7 @@ namespace Examination_System.Presentation.AdminForms
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new frmAdminDashboard().Show();
-        }
+      
 
         private void frmAdminManageTeachers_Load(object sender, EventArgs e)
         {
@@ -66,11 +63,7 @@ namespace Examination_System.Presentation.AdminForms
 
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-
-            new CreateNewTheacher().Show();
-        }
+       
 
         private void Teacher_Info_Report(object sender, DataGridViewCellEventArgs e)
         {

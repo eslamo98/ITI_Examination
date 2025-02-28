@@ -19,59 +19,26 @@
     <Compile Update="leftPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\AdminForms\CreateNewTheacher.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminCreateEditCourseUc.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminCreateUser.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminCreateUserUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminEditExam.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminEditExamUc.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminEditProfile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminManageExams.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminManageExamsUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminManageStudents.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminManageStudentUc.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminManageTeachers.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminManageTeachersUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminProfile.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminProfileUc.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminReport1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminReports.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminReportsUc.cs">
       <SubType>UserControl</SubType>
@@ -82,12 +49,6 @@
     <Compile Update="Presentation\AdminForms\frmAdminStudentCoursesUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminStudentExams.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\frmAdminStudentsReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Presentation\AdminForms\frmAdminStudentsReportUc.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,9 +57,6 @@
     </Compile>
     <Compile Update="Presentation\AdminForms\frmShowStudentExamUc.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Presentation\AdminForms\Teacher_Info_Report.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\AdminForms\WelcomeAdminControl.cs">
       <SubType>UserControl</SubType>
@@ -110,6 +68,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\StudentForms\frmExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmShowStudentExam.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\StudentForms\frmStudentCourses.cs">
@@ -171,6 +132,9 @@
     </Compile>
     <Compile Update="Presentation\TeacherForms\frmTeacherReports.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\WelcomeUS.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Teacher_Info_Report.cs">
       <SubType>Form</SubType>

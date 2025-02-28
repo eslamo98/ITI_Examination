@@ -382,8 +382,8 @@ namespace Examination_System.Presentation.TeacherForms
         private void button2_Click_1(object sender, EventArgs e)
         {
             this.Hide();
-            WelcomeUS w = new WelcomeUS();
-            General.LoadUserControl(w);
+            //WelcomeUS w = new WelcomeUS();
+            //General.LoadUserControl(w);
         }
     }
 }

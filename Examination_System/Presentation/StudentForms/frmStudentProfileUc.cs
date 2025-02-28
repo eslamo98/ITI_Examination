@@ -131,7 +131,7 @@ namespace Examination_System.Presentation.StudentForms
                 MessageBox.Show("Student was created successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (returnForm == ReturnForm.frmAdminManageStudents)
                 {
-                    new frmAdminManageStudents().Show();
+                    //new frmAdminManageStudents().Show();
                 }
             }
             else

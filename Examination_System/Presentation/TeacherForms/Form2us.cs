@@ -14,7 +14,9 @@ namespace Examination_System.Presentation.TeacherForms
 {
     public partial class Form2us : UserControl
     {
-        int login_id = 11;
+        //int login_id = 12;
+        int login_id = General.LoggedUser.ID;
+
         private StudentService _studentService;
         public Form2us()
         {
@@ -22,7 +24,6 @@ namespace Examination_System.Presentation.TeacherForms
             _studentService = new StudentService();
             LoadCourses();
         }
-        //int login_id = General.LoggedUser.ID;
 
 
         private void LoadCourses()
@@ -39,7 +40,7 @@ namespace Examination_System.Presentation.TeacherForms
         private void Form2us_Load(object sender, EventArgs e)
         {
             //dataGridView1.DataSource = _studentService.GetAllStudents(login_id);
-            label1.Text = $"Hello Teacher Number {login_id}";
+            //label1.Text = $"Hello Teacher Number {login_id}";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -84,9 +85,14 @@ namespace Examination_System.Presentation.TeacherForms
         private void rdbtnAll_CheckedChanged(object sender, EventArgs e) => ApplyFilters();
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) => ApplyFilters();
 
-        private void btn_back_Click(object sender, EventArgs e)
+      
+
+        private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();
+            WelcomeUS w = new WelcomeUS();
+            General.LoadUserControl(w);
+
             //new frmTeacherProfile().Show();
         }
 
