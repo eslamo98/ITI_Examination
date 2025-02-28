@@ -63,6 +63,7 @@
             button2.TabIndex = 50;
             button2.Text = "Save Exam";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += BtnSave_Click;
             // 
             // dgvQuestions
             // 

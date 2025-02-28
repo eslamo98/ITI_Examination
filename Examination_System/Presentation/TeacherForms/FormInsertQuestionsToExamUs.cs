@@ -12,10 +12,11 @@ using ExaminationSystem.Business.ExamQuestionService;
 using ExaminationSystem.Business.QuestionService;
 using ExaminationSystem.Data_Access.Models;
 using ExaminationSystem.Presentation;
+using ExaminationSystem.Data_Access;
 
 namespace Examination_System.Presentation.TeacherForms
 {
-    public partial class FormInsertQuestionsToExamUs: UserControl
+    public partial class FormInsertQuestionsToExamUs : UserControl
     {
         private Exam _exam;
         private QuestionList selectedQuestions = [];
@@ -70,8 +71,6 @@ namespace Examination_System.Presentation.TeacherForms
                 LoadQuestions(selectedTypes);
             }
         }
-
-
         private void SetupDataGridView()
         {
             if (dgvQuestions.Columns["AddButton"] == null)
@@ -115,10 +114,7 @@ namespace Examination_System.Presentation.TeacherForms
                     column.Visible = false;
                 }
             }
-
-
         }
-
         private void LoadExamQuestions()
         {
             DataTable table = QuestionService.GetQuestionsbyExamID(_exam.ID);
@@ -233,6 +229,13 @@ namespace Examination_System.Presentation.TeacherForms
 
             LoadQuestions();
             LoadExamQuestions();
+            QuestionList questions = QuestionService.GetQuestionsListbyExamID(_exam.ID);
+            DataTable exam = ExamRepository.GetExamById(_exam.ID);
+            if (exam.Rows.Count > 0)
+            {
+                _exam.Marks = Convert.ToInt32(exam.Rows[0]["TotalMarks"]);
+            }
+            _exam.QuestionList = questions;
             FormExamPreview formExamPreview = new(_exam);
             formExamPreview.ShowDialog();
         }
