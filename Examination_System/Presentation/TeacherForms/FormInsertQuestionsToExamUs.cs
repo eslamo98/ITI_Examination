@@ -14,6 +14,7 @@ using ExaminationSystem.Data_Access.Models;
 using ExaminationSystem.Data_Access;
 using Examination_System.Presentation.Common;
 
+
 namespace Examination_System.Presentation.TeacherForms
 {
     public partial class FormInsertQuestionsToExamUs : UserControl
@@ -239,7 +240,9 @@ namespace Examination_System.Presentation.TeacherForms
 
         private void dgvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            //FormExamPreview formExamPreview = new(_exam);
+            //formExamPreview.ShowDialog();
+            General.LoadUserControl(new FormExamPerviewUC(_exam));
         }
     }
 }

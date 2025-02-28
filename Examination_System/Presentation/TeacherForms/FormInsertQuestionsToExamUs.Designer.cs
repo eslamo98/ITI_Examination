@@ -51,6 +51,7 @@
             // QuestionTypes
             // 
             QuestionTypes.FormattingEnabled = true;
+
             QuestionTypes.Location = new Point(178, 101);
             QuestionTypes.Name = "QuestionTypes";
             QuestionTypes.Size = new Size(232, 92);
@@ -63,6 +64,51 @@
             label7.Location = new Point(34, 115);
             label7.Name = "label7";
             label7.Size = new Size(138, 23);
+
+            QuestionTypes.Location = new Point(52, 46);
+            QuestionTypes.Margin = new Padding(3, 2, 3, 2);
+            QuestionTypes.Name = "QuestionTypes";
+            QuestionTypes.Size = new Size(220, 76);
+            QuestionTypes.TabIndex = 52;
+            // 
+            // dgvExams
+            // 
+            dgvExams.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvExams.Location = new Point(444, 147);
+            dgvExams.Margin = new Padding(3, 2, 3, 2);
+            dgvExams.Name = "dgvExams";
+            dgvExams.RowHeadersWidth = 51;
+            dgvExams.Size = new Size(416, 339);
+            dgvExams.TabIndex = 51;
+            // 
+            // button2
+            // 
+            //button2.Location = new Point(386, 512);
+            //button2.Name = "button2";
+            //button2.Size = new Size(104, 32);
+            //button2.TabIndex = 50;
+            //button2.Text = "Save Exam";
+            //button2.UseVisualStyleBackColor = true;
+            //button2.Click += BtnSave_Click;
+            // 
+            // dgvQuestions
+            // 
+            dgvQuestions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvQuestions.Location = new Point(3, 147);
+            dgvQuestions.Margin = new Padding(3, 2, 3, 2);
+            dgvQuestions.Name = "dgvQuestions";
+            dgvQuestions.RowHeadersWidth = 51;
+            dgvQuestions.Size = new Size(425, 339);
+            dgvQuestions.TabIndex = 49;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(52, 9);
+            label7.Name = "label7";
+            label7.Size = new Size(139, 25);
+
             label7.TabIndex = 48;
             label7.Text = "Question Type ";
             // 
@@ -225,7 +271,7 @@
             // 
             // FormInsertQuestionsToExamUs
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btn_back);
             Controls.Add(label1);
@@ -233,11 +279,17 @@
             Controls.Add(customPanel1);
             Controls.Add(QuestionTypes);
             Controls.Add(label7);
-            MaximumSize = new Size(986, 749);
-            MinimumSize = new Size(986, 749);
+            Margin = new Padding(3, 2, 3, 2);
+            MaximumSize = new Size(863, 562);
+            MinimumSize = new Size(863, 562);
             Name = "FormInsertQuestionsToExamUs";
+
             Size = new Size(986, 749);
             customPanel1.ResumeLayout(false);
+
+            Size = new Size(863, 562);
+            ((System.ComponentModel.ISupportInitialize)dgvExams).EndInit();
+
             ((System.ComponentModel.ISupportInitialize)dgvQuestions).EndInit();
             customPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvExams).EndInit();

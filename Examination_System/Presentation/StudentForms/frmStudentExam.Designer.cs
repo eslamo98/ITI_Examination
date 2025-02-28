@@ -35,10 +35,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(21, 24);
-            button1.Margin = new Padding(5, 6, 5, 6);
+            button1.Location = new Point(12, 12);
             button1.Name = "button1";
-            button1.Size = new Size(129, 46);
+            button1.Size = new Size(75, 23);
             button1.TabIndex = 0;
             button1.Text = "back";
             button1.UseVisualStyleBackColor = true;
@@ -47,26 +46,23 @@
             // dgvStudentExams
             // 
             dgvStudentExams.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvStudentExams.Location = new Point(21, 104);
-            dgvStudentExams.Margin = new Padding(5, 6, 5, 6);
+            dgvStudentExams.Location = new Point(12, 52);
             dgvStudentExams.Name = "dgvStudentExams";
             dgvStudentExams.RowHeadersWidth = 72;
-            dgvStudentExams.Size = new Size(1330, 488);
+            dgvStudentExams.Size = new Size(776, 244);
             dgvStudentExams.TabIndex = 1;
-            dgvStudentExams.CellFormatting += dgvExamsStudent_CellFormatting;
             dgvStudentExams.CellContentClick += dgvStudentExams_CellClick;
             // 
             // frmStudentExam
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1371, 900);
+            ClientSize = new Size(749, 350);
             Controls.Add(dgvStudentExams);
             Controls.Add(button1);
-            Margin = new Padding(5, 6, 5, 6);
             Name = "frmStudentExam";
             Text = "frmStudentExam";
-            Load += frmStudentExam_Load_1;
+            Load += frmStudentExam_Load;
             ((System.ComponentModel.ISupportInitialize)dgvStudentExams).EndInit();
             ResumeLayout(false);
         }

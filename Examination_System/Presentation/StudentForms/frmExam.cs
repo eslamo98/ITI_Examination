@@ -1,175 +1,145 @@
-﻿using System;
-using System.Data;
+﻿using Microsoft.Data.SqlClient;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Data.SqlClient;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using ComboBox = System.Windows.Forms.ComboBox;
-using ProgressBar = System.Windows.Forms.ProgressBar;
-using TextBox = System.Windows.Forms.TextBox;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Examination_System.Presentation.StudentForms
 {
     public partial class frmExam : Form
     {
-        private int examDuration = 3600;
-        private int timeRemaining;
-        private Timer examTimer;
-        private ProgressBar progressBar;
+        private int studentID;
+        private int examID;
+        private int timeRemaining = 900; // 15 دقيقة
+        private Dictionary<int, TextBox> studentAnswers = new Dictionary<int, TextBox>();
+        private Timer timerExam; // تعريف المؤقت
 
-        public frmExam()
+        public frmExam(int examID, int studentID)
         {
             InitializeComponent();
-            InitializeProgressBar();
-            timeRemaining = examDuration;
-            examTimer = new Timer { Interval = 1000 };
-            examTimer.Tick += async (s, e) => await UpdateTimer();
+            this.examID = examID;
+            this.studentID = studentID;
+            InitializeTimer(); // تهيئة المؤقت
         }
 
-        private void InitializeProgressBar()
+        private void frmExam_Load(object sender, EventArgs e)
         {
-            progressBar = new ProgressBar
+            LoadQuestions();
+            StartExamTimer();
+        }
+
+        private void InitializeTimer()
+        {
+            timerExam = new Timer();
+            timerExam.Interval = 1000;
+            timerExam.Tick += TimerExam_Tick;
+        }
+
+        private void LoadQuestions()
+        {
+            panelQuestions.Controls.Clear();
+            string connectionString = "your_connection_string_here";
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                Minimum = 0,
-                Maximum = 100,
-                Value = 100,
-                Dock = DockStyle.Top,
-                Height = 20
-            };
-            Controls.Add(progressBar);
+                conn.Open();
+                string query = @"
+                    SELECT q.QuestionID, q.QuestionText 
+                    FROM ExamQuestion eq
+                    JOIN Questions q ON eq.QuestionID = q.QuestionID
+                    WHERE eq.ExamID = @ExamID";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@ExamID", examID);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    int yOffset = 10;
+                    while (reader.Read())
+                    {
+                        int questionID = reader.GetInt32(0);
+                        string questionText = reader.GetString(1);
+
+                        Label lblQuestion = new Label
+                        {
+                            Text = questionText,
+                            Location = new Point(10, yOffset),
+                            Size = new Size(800, 30)
+                        };
+                        panelQuestions.Controls.Add(lblQuestion);
+
+                        TextBox txtAnswer = new TextBox
+                        {
+                            Name = $"txtAnswer_{questionID}",
+                            Location = new Point(10, yOffset + 35),
+                            Size = new Size(500, 30)
+                        };
+                        panelQuestions.Controls.Add(txtAnswer);
+                        studentAnswers[questionID] = txtAnswer;
+
+                        yOffset += 80;
+                    }
+                }
+            }
         }
 
-        private async void frmExam_Load(object sender, EventArgs e)
+        private void StartExamTimer()
         {
-            await LoadExamQuestionsAsync();
-            examTimer.Start();
+            timerExam.Start();
         }
 
-        private async Task UpdateTimer()
+        private void TimerExam_Tick(object sender, EventArgs e)
         {
             timeRemaining--;
-            lblTime.Text = $"Time Remaining: {TimeSpan.FromSeconds(timeRemaining)}";
-            progressBar.Value = (int)((double)timeRemaining / examDuration * 100);
+            lblTime.Text = $"Time Left: {timeRemaining / 60}:{timeRemaining % 60}";
 
             if (timeRemaining <= 0)
             {
-                examTimer.Stop();
-                await AutoSubmitExamAsync();
+                timerExam.Stop();
+                MessageBox.Show("Time is up! Submitting exam automatically.", "Time Up", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SubmitExam();
             }
         }
 
-        private async Task AutoSubmitExamAsync()
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            await SaveAllAnswersAsync();
-            MessageBox.Show("Time finished! Exam submitted.");
-            Close();
-        }
-
-        private async void btnSubmit_Click(object sender, EventArgs e)
-        {
-            examTimer.Stop();
-            await SaveAllAnswersAsync();
-            MessageBox.Show("Exam submitted successfully!");
-            Close();
-        }
-
-        private async void txtAnswer_Leave(object sender, EventArgs e)
-        {
-            if (sender is TextBox txt && txt.Parent is Panel panel && panel.Controls["lblQuestionId"] is Label lblQuestionId)
+            DialogResult result = MessageBox.Show("Are you sure you want to submit?", "Confirm Submission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                int questionId = int.Parse(lblQuestionId.Text);
-                string answer = txt.Text;
-                await SaveAnswerToDatabaseAsync(questionId, answer);
+                SubmitExam();
             }
         }
 
-        private async Task SaveAnswerToDatabaseAsync(int questionId, string answer)
+        private void SubmitExam()
         {
-            string connString = "Data Source=.;Initial Catalog=FatmaLast;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            string query = @"MERGE INTO submit AS target
-                             USING (SELECT @StudentId AS StudentId, @ID AS ID) AS source
-                             ON target.StudentId = source.StudentId AND target.ID = source.ID
-                             WHEN MATCHED THEN UPDATE SET Answer = @Answer
-                             WHEN NOT MATCHED THEN INSERT (StudentId, ID, Answer) VALUES (@StudentId, @ID, @Answer);";
+            string connectionString = "your_connection_string_here";
 
-            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                await conn.OpenAsync();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                conn.Open();
+                foreach (var entry in studentAnswers)
                 {
-                    cmd.Parameters.AddWithValue("@StudentId", General.LoggedUser.ID);
-                    cmd.Parameters.AddWithValue("@ID", questionId);
-                    cmd.Parameters.AddWithValue("@Answer", answer);
-                    await cmd.ExecuteNonQueryAsync();
+                    int questionID = entry.Key;
+                    string answerText = entry.Value.Text;
+
+                    string insertQuery = @"
+                        INSERT INTO Submit (StudentID, ExamID, QuestionID, AnswerText)
+                        VALUES (@StudentID, @ExamID, @QuestionID, @AnswerText)";
+
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@StudentID", studentID);
+                        cmd.Parameters.AddWithValue("@ExamID", examID);
+                        cmd.Parameters.AddWithValue("@QuestionID", questionID);
+                        cmd.Parameters.AddWithValue("@AnswerText", answerText);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
             }
-        }
 
-        private async Task SaveAllAnswersAsync()
-        {
-            foreach (Control ctrl in panelQuestions.Controls)
-            {
-                if (ctrl is Panel questionPanel && questionPanel.Controls["txtAnswer"] is TextBox txtAnswer && questionPanel.Controls["lblQuestionId"] is Label lblQuestionId)
-                {
-                    int questionId = int.Parse(lblQuestionId.Text);
-                    string answer = txtAnswer.Text;
-                    await SaveAnswerToDatabaseAsync(questionId, answer);
-                }
-            }
-        }
-
-        private async Task<DataTable> GetExamQuestionsFromDBAsync()
-        {
-            DataTable dtQuestions = new DataTable();
-            string connString = "Data Source=.;Initial Catalog=FatmaLast;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
-            string sql = "SELECT q.ID, q.Body, q.Type, a.AnswerText FROM Questions q LEFT JOIN Answers a ON q.ID = a.QuestionID;";
-
-            using (SqlConnection conn = new SqlConnection(connString))
-            {
-                await conn.OpenAsync();
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                {
-                    da.Fill(dtQuestions);
-                }
-            }
-            return dtQuestions;
-        }
-
-        private async Task LoadExamQuestionsAsync()
-        {
-            DataTable dtQuestions = await GetExamQuestionsFromDBAsync();
-            panelQuestions.Controls.Clear();
-            int yPos = 10;
-
-            foreach (DataRow row in dtQuestions.Rows)
-            {
-                Panel questionPanel = new Panel { BorderStyle = BorderStyle.FixedSingle, Width = panelQuestions.Width - 20, Height = 100, Location = new Point(10, yPos) };
-                Label lblQuestion = new Label { Text = row["Body"].ToString(), Location = new Point(10, 10), AutoSize = true };
-                Label lblQuestionId = new Label { Text = row["ID"].ToString(), Name = "lblQuestionId", Visible = false };
-                questionPanel.Controls.Add(lblQuestion);
-                questionPanel.Controls.Add(lblQuestionId);
-
-                if (row["Type"].ToString() == "MultipleChoice")
-                {
-                    ComboBox cmbAnswers = new ComboBox { Width = questionPanel.Width - 20, Location = new Point(10, 40) };
-                    cmbAnswers.Items.Add(row["AnswerText"].ToString());
-                    cmbAnswers.SelectedIndexChanged += async (s, e) => await SaveAnswerToDatabaseAsync(int.Parse(lblQuestionId.Text), cmbAnswers.SelectedItem.ToString());
-                    questionPanel.Controls.Add(cmbAnswers);
-                }
-                else
-                {
-                    TextBox txtAnswer = new TextBox { Name = "txtAnswer", Width = questionPanel.Width - 20, Location = new Point(10, 40) };
-                    txtAnswer.Leave += txtAnswer_Leave;
-                    questionPanel.Controls.Add(txtAnswer);
-                }
-
-                panelQuestions.Controls.Add(questionPanel);
-                yPos += questionPanel.Height + 10;
-            }
+            MessageBox.Show("Exam submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
     }
 }
- 

@@ -1,5 +1,6 @@
 ﻿using Examination_System.Business;
 using Examination_System.Presentation.AdminForms;
+using Examination_System.Presentation.Common;
 using Examination_System.Presentation.TeacherForms;
 using ExaminationSystem.Data_Access.Models;
 using System;
@@ -38,7 +39,7 @@ namespace Examination_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
 
@@ -78,6 +79,14 @@ namespace Examination_System
         {
             //General.LoadUserControl(new FormInsertQuestionsToExamUs());
 
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            UserService.Logout();
+            this.Close();
+            new ToastForm(Business.Enums.ToastType.Success, "Logged out Successfully").Show();
+            General.frmLogin.Show();
         }
     }
 }

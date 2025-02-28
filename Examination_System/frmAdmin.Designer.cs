@@ -102,6 +102,7 @@
             button8.Text = "             Logout";
             button8.TextAlign = ContentAlignment.MiddleLeft;
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // panel3
             // 
@@ -311,6 +312,8 @@
             // pl_content
             // 
             pl_content.Location = new Point(223, 4);
+            pl_content.MaximumSize = new Size(863, 562);
+            pl_content.MinimumSize = new Size(863, 562);
             pl_content.Name = "pl_content";
             pl_content.Size = new Size(863, 562);
             pl_content.TabIndex = 1;
