@@ -14,7 +14,7 @@ namespace Examination_System.Business
         {
             DataTable dtStudentAnswers = new DataTable();
 
-           
+
             try
             {
 
@@ -43,25 +43,59 @@ namespace Examination_System.Business
                 // Handle database exceptions (e.g., log the error)
                 throw new Exception("An error occurred while fetching student answers: " + ex.Message);
             }
-          
-            
+
+
 
             return dtStudentAnswers;
         }
+
+        public static void SubmitAnswer(int studentId, int examId, int questionId, int answerId)
+        {
+            try
+            {
+                // SQL query to insert the student's answer into the Submit table
+                string query = @"
+                    INSERT INTO Submit (studentId, ExamId, QuestionId, AnswerId)
+                    VALUES (@studentId, @examId, @questionId, @answerId)";
+
+                // Parameters for the query
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@studentId", studentId),
+                    new SqlParameter("@examId", examId),
+                    new SqlParameter("@questionId", questionId),
+                    new SqlParameter("@answerId", answerId)
+                };
+                using (SqlConnection con = new SqlConnection(General.connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddRange(parameters);
+
+                    // Execute the query
+                    Reposatory.DML(cmd);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions (e.g., log the error or throw it)
+                throw new Exception("Failed to submit answer: " + ex.Message);
+            }
+        }
         public static Tuple<int, User> Login(string usernameOrEmail, string password)
         {
-			try
-			{
+            try
+            {
                 return UserRepository.GetLogin(usernameOrEmail, password);
-                
-            }
-			catch (Exception ex)
-			{
 
-				throw ex;
-			}
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
-        
+
         public static void Logout()
         {
             General.LoggedUser = null;
@@ -115,7 +149,8 @@ namespace Examination_System.Business
 
                     pic.Image = Image.FromStream(stream);
                 }
-            } else
+            }
+            else
             {
                 string imageFileName = user.Gender == Business.Enums.Gender.Male
                 ? "man.png"
@@ -136,14 +171,58 @@ namespace Examination_System.Business
                 }
             }
 
-            
-        }
 
+        }
+        public static int DeleteTeacherById(int teacherId)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand($"DeleteTeacherById");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TeacherId", teacherId);
+                SqlParameter Status = new SqlParameter("@Status", SqlDbType.Int) { Direction = ParameterDirection.Output };
+                SqlParameter Error = new SqlParameter("@Error", SqlDbType.NVarChar, 255) { Direction = ParameterDirection.Output };
+                cmd.Parameters.AddRange(new SqlParameter[]
+                {
+                    Status, Error
+                });
+                Reposatory.DML(cmd);
+                return (int)Status.Value;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public static DataTable GetAllTeachers()
         {
             return UserRepository.GetAllTeachers();
         }
+        public static HomeData GetHomeData()
+        {
+            SqlCommand cmd = new SqlCommand("GetHomeData");
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlParameter studentsNumber = new SqlParameter("@stNum", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            SqlParameter teacherssNumber = new SqlParameter("@tNum", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            SqlParameter coursesNumber = new SqlParameter("@cNum", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            SqlParameter examsNumber = new SqlParameter("@eNum", SqlDbType.Int) { Direction = ParameterDirection.Output };
+            cmd.Parameters.AddRange(new SqlParameter[] {
+                studentsNumber,
+                teacherssNumber,
+                coursesNumber,
+                examsNumber
+            });
 
+            Reposatory.select(cmd);
+            HomeData homeData = new HomeData();
+            homeData.StudentsNumber = studentsNumber.Value != DBNull.Value ? Convert.ToInt32(studentsNumber.Value) : 0;
+            homeData.TeachersNumber = teacherssNumber.Value != DBNull.Value ? Convert.ToInt32(teacherssNumber.Value) : 0;
+            homeData.CoursesNumber = coursesNumber.Value != DBNull.Value ? Convert.ToInt32(coursesNumber.Value) : 0;
+            homeData.ExamsNumber = examsNumber.Value != DBNull.Value ? Convert.ToInt32(examsNumber.Value) : 0;
+
+            return homeData;
+        }
         public static DataTable GetAllCoursesStudentEnrolledIn(int studentId)
         {
             try
@@ -174,16 +253,19 @@ namespace Examination_System.Business
 
         public static DataTable GetStudentsByTeacherAndCourse(int courseId, int teacherId)
         {
-            if(courseId == 0 && teacherId != 0)
+            if (courseId == 0 && teacherId != 0)
             {
                 return GetAllStudentsByTeacherId(teacherId);
-            } else if(teacherId == 0 && courseId != 0)
+            }
+            else if (teacherId == 0 && courseId != 0)
             {
                 return GetStudentsByCourseId(courseId);
-            } else if(courseId != 0 & teacherId != 0)
+            }
+            else if (courseId != 0 & teacherId != 0)
             {
                 return UserRepository.GetStudentsByTeacherAndCourse(courseId, teacherId);
-            } else
+            }
+            else
             {
                 return GetAllStudents();
             }
@@ -209,9 +291,71 @@ namespace Examination_System.Business
 
                 throw ex;
             }
-            
-        }
 
+        }
+        public static DataTable getAllCoursesForTeacher(int teacherId)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(@$"
+                    select Id, CourseName from Courses 
+	                    where TeacherID = {teacherId}
+	                    or TeacherID is null
+                    "))
+                {
+
+
+                    return UserRepository.UserDAL(cmd);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        public static List<ActivityLog> GetRecentActivities()
+        {
+            DataTable dataTable = Reposatory.select(new SqlCommand($"  select top(5) * from ActivityLog order by ActivityID desc"));
+            List<ActivityLog> logs = new List<ActivityLog>();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                ActivityLog log = new ActivityLog
+                {
+                    ActivityID = Convert.ToInt32(row["ActivityID"]),
+                    TableName = row["TableName"].ToString(),
+                    RecordID = Convert.ToInt32(row["RecordID"]),
+                    ActionType = row["ActionType"].ToString(),
+                    ActionTimestamp = row["ActionTimestamp"] != DBNull.Value ? (DateTime?)row["ActionTimestamp"] : null,
+                    Details = row["Details"] != DBNull.Value ? row["Details"].ToString() : null,
+                    UserName = row["UserName"] != DBNull.Value ? row["UserName"].ToString() : null
+                };
+
+                logs.Add(log);
+            }
+            return logs;
+        }
+        public static DataTable GetTeacherCourses(int teacherId)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand(@$"
+                    select Id, CourseName from Courses 
+	                    where TeacherID = {teacherId}
+	                    
+                    "))
+                {
+
+
+                    return UserRepository.UserDAL(cmd);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public static int CreateUpdateUser(User user, List<int> coursesIds, OperationMode operationMode)
         {
             try
@@ -239,10 +383,27 @@ namespace Examination_System.Business
 
         public static DataTable GetStudentExamQuestions(int studentId, int examId)
         {
-            SqlCommand cmd = new SqlCommand($"select distinct Q.*, Eq.ExamID from Questions Q\r\n\tjoin ExamQuestion EQ\r\n\ton Q.id = EQ.QuestionID\r\n\tjoin StudentCourses SC\r\n\ton Q.CourseID = SC.CourseID\r\nwhere sc.StudentID = {studentId} and EQ.ExamID = {examId}");
+            string query = @"SELECT DISTINCT Q.*, EQ.ExamID 
+                     FROM Questions Q
+                     JOIN ExamQuestion EQ ON Q.ID = EQ.QuestionID
+                     JOIN StudentCourses SC ON Q.CourseID = SC.CourseID
+                     JOIN Exam E ON EQ.ExamID = E.ID
+                     WHERE SC.StudentID = @studentId 
+                     AND EQ.ExamID = @examId 
+                     ";  // Ensure the exam is active (assuming 1 = active)
+
+            SqlCommand cmd = new SqlCommand(query);
+            cmd.Parameters.AddWithValue("@studentId", studentId);
+            cmd.Parameters.AddWithValue("@examId", examId);
+
             return UserRepository.UserDAL(cmd);
         }
 
+        public static DataTable GetAllAvialableCourses()
+        {
+            SqlCommand cmd = new SqlCommand($"select ID,  CourseName from Courses where teacherid is null");
+            return UserRepository.UserDAL(cmd);
+        }
         public static DataTable GetStudentExamQuestionAnswers(int questionId)
         {
             SqlCommand cmd = new SqlCommand($"select * from Answers where QuestionID = {questionId}");

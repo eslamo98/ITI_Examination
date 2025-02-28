@@ -24,6 +24,7 @@ namespace Examination_System.Presentation.AdminForms
             LoadQuestions();
         }
 
+
         private int totalMarks;
 
         private void LoadExamDetails()

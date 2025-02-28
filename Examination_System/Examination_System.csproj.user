@@ -64,6 +64,12 @@
     <Compile Update="Presentation\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Presentation\StudentForms\frmShowStudentExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmStudentCourcesUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Presentation\StudentForms\frmStudentCourses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
     <Compile Update="Presentation\StudentForms\frmStudentProfile.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmStudentProfileUc.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Presentation\TeacherForms\Form1.cs">
       <SubType>Form</SubType>

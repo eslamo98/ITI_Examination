@@ -44,12 +44,7 @@ namespace Examination_System.Presentation
             User updatedUser = new User()
             {
                 ID = user.ID,
-                Email = tx_email.Text.Trim(),
-                FirstName = tx_firstname.Text.Trim(),
-                Gender = (Gender)com_gender.SelectedItem,
-                LastName = tx_lastname.Text.Trim(),
                 PasswordHash = tx_password.Text.Trim(),
-                SSN = tx_ssn.Text.Trim(),
                 Username = tx_username.Text.Trim(),
                 UserRole = user.ID == General.LoggedUser.ID? UserRole.Admin: user.UserRole,
             };
@@ -100,7 +95,6 @@ namespace Examination_System.Presentation
 
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
 
         }
 

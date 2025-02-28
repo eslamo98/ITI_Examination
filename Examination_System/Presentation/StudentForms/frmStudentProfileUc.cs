@@ -1,34 +1,33 @@
-﻿using Examination_System.Business.Enums;
-using Examination_System.Business;
-using ExaminationSystem.Data_Access.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Examination_System.Data_Access.Models;
+using Examination_System.Business.Enums;
+using Examination_System.Business;
 using Examination_System.Presentation.Common;
+using Examination_System.Data_Access.Models;
 
-namespace Examination_System.Presentation.AdminForms
+namespace Examination_System.Presentation.StudentForms
 {
-    public partial class frmAdminProfileUc : UserControl
+    public partial class frmStudentProfileUc : UserControl
     {
-        public static event EventHandler UserDataChanged; 
+        public static event EventHandler UserDataChanged;
         private readonly ReturnForm returnForm;
         private readonly User user = new User();
 
-        public frmAdminProfileUc()
+        public frmStudentProfileUc()
         {
             InitializeComponent();
-            
+
             com_gender.DataSource = Enum.GetValues(typeof(Gender));
         }
 
-        public frmAdminProfileUc(User _user) : this()
+        public frmStudentProfileUc(User _user) : this()
         {
             user = _user;
             UserService.SetUserImage(pic_userImg, user);
@@ -77,7 +76,7 @@ namespace Examination_System.Presentation.AdminForms
                     new ToastForm(ToastType.Success, result.Item1).Show();
                     // Fire the static event after successfully saving user data
                     UserDataChanged?.Invoke(this, EventArgs.Empty);
-                    
+
                 }
                 else
                 {
@@ -125,7 +124,7 @@ namespace Examination_System.Presentation.AdminForms
                 updatedUser.UserImg = stream.GetBuffer();
             }
             List<int> selectedCourses = new();
-            
+
             int result = UserService.CreateUpdateUser(updatedUser, selectedCourses, OperationMode.Edit);
             if (result == 1)
             {
@@ -151,7 +150,5 @@ namespace Examination_System.Presentation.AdminForms
                 pic_userImg.Image = new Bitmap(fileDialog.FileName);
             }
         }
-
-        
     }
 }
