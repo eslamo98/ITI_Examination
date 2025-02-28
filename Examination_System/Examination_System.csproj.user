@@ -163,6 +163,9 @@
     <Compile Update="Presentation\TeacherForms\UserControlTryForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Presentation\TeacherForms\WelcomeUS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Teacher_Info_Report.cs">
       <SubType>Form</SubType>
     </Compile>

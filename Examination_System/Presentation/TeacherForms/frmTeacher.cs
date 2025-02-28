@@ -35,6 +35,9 @@ namespace Examination_System
         private void frmAdmin_Load(object sender, EventArgs e)
         {
             pl_sidebar.BackColor = General.primarycolor;
+            General.LoadUserControl(new WelcomeUS());
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,6 +90,11 @@ namespace Examination_System
             this.Close();
             new ToastForm(Business.Enums.ToastType.Success, "Logged out Successfully").Show();
             General.frmLogin.Show();
+        }
+
+        private void pl_content_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
