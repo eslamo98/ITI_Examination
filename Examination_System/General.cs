@@ -13,7 +13,8 @@ namespace Examination_System
         static public User LoggedUser { get; set; } = new User() { ID =11 };
         public static string connectionString { get; set; } = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                           .AddJsonFile("appSettings.json")
-                          .Build().GetSection("sqlconnectionAwad").Value;
+                          .Build().GetSection("sqlConnectionFatma").Value;
+
 
         public static string rootPath =  Directory.GetParent(Application.StartupPath).Parent.Parent.Parent.FullName;
         public static frmLogin frmLogin { get; set; }

@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTeacher));
             pl_sidebar = new Panel();
             panel9 = new Panel();
             button8 = new Button();
             panel3 = new Panel();
-            button2 = new Button();
             panel8 = new Panel();
             button7 = new Button();
             panel7 = new Panel();
@@ -50,7 +50,6 @@
             pic_userImg = new PictureBox();
             pl_content = new Panel();
             pl_sidebar.SuspendLayout();
-            panel9.SuspendLayout();
             panel3.SuspendLayout();
             panel8.SuspendLayout();
             panel7.SuspendLayout();
@@ -82,6 +81,8 @@
             // 
             // panel9
             // 
+            panel9.Location = new Point(0, 697);
+            panel9.Margin = new Padding(3, 4, 3, 4);
             panel9.Controls.Add(button8);
             panel9.Location = new Point(0, 697);
             panel9.Margin = new Padding(3, 4, 3, 4);
@@ -96,8 +97,16 @@
             button8.ForeColor = Color.Snow;
             button8.Image = Properties.Resources.icons8_logout_26;
             button8.ImageAlign = ContentAlignment.MiddleLeft;
+
+            button8.Location = new Point(-21, -11);
+            button8.Margin = new Padding(3, 4, 3, 4);
+
+            button8.Location = new Point(-18, -9);
+
+
             button8.Location = new Point(-21, -12);
             button8.Margin = new Padding(3, 4, 3, 4);
+
             button8.Name = "button8";
             button8.Padding = new Padding(34, 0, 0, 0);
             button8.Size = new Size(297, 68);
@@ -109,30 +118,57 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(button2);
+
+            panel3.Controls.Add(button8);
+            panel3.Location = new Point(3, 509);
+            panel3.Margin = new Padding(3, 4, 3, 4);
+
+            //panel3.Controls.Add(button2);
+            panel3.Location = new Point(3, 382);
+
+
+            //panel3.Controls.Add(button2);
             panel3.Location = new Point(3, 509);
             panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
             panel3.Size = new Size(438, 45);
             panel3.TabIndex = 5;
             // 
+
             // button2
             // 
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.Snow;
-            button2.Image = Properties.Resources.icons8_settings_32;
-            button2.ImageAlign = ContentAlignment.MiddleLeft;
-            button2.Location = new Point(-25, -10);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Padding = new Padding(34, 0, 0, 0);
-            button2.Size = new Size(427, 56);
-            button2.TabIndex = 2;
-            button2.Text = "               setting";
-            button2.TextAlign = ContentAlignment.MiddleLeft;
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+
+            //button2.FlatStyle = FlatStyle.Flat;
+            //button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            //button2.ForeColor = Color.Snow;
+            //button2.Image = Properties.Resources.icons8_settings_32;
+            //button2.ImageAlign = ContentAlignment.MiddleLeft;
+            //button2.Location = new Point(-26, -8);
+            //button2.Name = "button2";
+            //button2.Padding = new Padding(30, 0, 0, 0);
+            //button2.Size = new Size(374, 42);
+            //button2.TabIndex = 2;
+            //button2.Text = "               setting";
+            //button2.TextAlign = ContentAlignment.MiddleLeft;
+            //button2.UseVisualStyleBackColor = true;
+            //button2.Click += button2_Click;
+
+            //button2.FlatStyle = FlatStyle.Flat;
+            //button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            //button2.ForeColor = Color.Snow;
+            //button2.Image = Properties.Resources.icons8_settings_32;
+            //button2.ImageAlign = ContentAlignment.MiddleLeft;
+            //button2.Location = new Point(-25, -10);
+            //button2.Margin = new Padding(3, 4, 3, 4);
+            //button2.Name = "button2";
+            //button2.Padding = new Padding(34, 0, 0, 0);
+            //button2.Size = new Size(427, 56);
+            //button2.TabIndex = 2;
+            //button2.Text = "               setting";
+            //button2.TextAlign = ContentAlignment.MiddleLeft;
+            //button2.UseVisualStyleBackColor = true;
+            //button2.Click += button2_Click;
+
             // 
             // panel8
             // 
@@ -291,7 +327,7 @@
             button1.Padding = new Padding(34, 0, 0, 0);
             button1.Size = new Size(297, 68);
             button1.TabIndex = 2;
-            button1.Text = "             Home";
+            button1.Text = "             Profile";
             button1.TextAlign = ContentAlignment.MiddleLeft;
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
@@ -332,10 +368,23 @@
             // pl_content
             // 
             pl_content.AutoScroll = true;
+
+
+            pl_content.BackgroundImage = (Image)resources.GetObject("pl_content.BackgroundImage");
+            pl_content.BackgroundImageLayout = ImageLayout.Center;
+            pl_content.Location = new Point(255, 5);
+            pl_content.Margin = new Padding(3, 4, 3, 4);
+
+            pl_content.Location = new Point(223, 4);
+            pl_content.MaximumSize = new Size(863, 562);
+            pl_content.MinimumSize = new Size(863, 562);
+
+
             pl_content.Location = new Point(255, 5);
             pl_content.Margin = new Padding(3, 4, 3, 4);
             pl_content.MaximumSize = new Size(986, 749);
             pl_content.MinimumSize = new Size(986, 749);
+
             pl_content.Name = "pl_content";
             pl_content.Size = new Size(986, 749);
             pl_content.TabIndex = 1;
@@ -356,7 +405,6 @@
             Text = "frmTeacher";
             Load += frmAdmin_Load;
             pl_sidebar.ResumeLayout(false);
-            panel9.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel7.ResumeLayout(false);
@@ -387,7 +435,6 @@
         private Panel panel7;
         private Button button6;
         private Panel panel3;
-        private Button button2;
         private Panel panel9;
         private Button button8;
         private PictureBox pic_userImg;

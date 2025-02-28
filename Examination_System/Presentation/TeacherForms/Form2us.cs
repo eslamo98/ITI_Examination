@@ -93,7 +93,8 @@ namespace Examination_System.Presentation.TeacherForms
             WelcomeUS w = new WelcomeUS();
             General.LoadUserControl(w);
 
-
+            //new frmTeacherProfile().Show();
         }
+
     }
 }

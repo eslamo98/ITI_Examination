@@ -72,8 +72,13 @@
             // label3
             // 
             label3.AutoSize = true;
+
+            label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(29, 100);
+
             label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             label3.Location = new Point(85, 6);
+
             label3.Name = "label3";
             label3.Size = new Size(163, 25);
             label3.TabIndex = 44;
@@ -92,9 +97,15 @@
             // checkedListBox3
             // 
             checkedListBox3.FormattingEnabled = true;
+
+            checkedListBox3.Location = new Point(719, 197);
+            checkedListBox3.Name = "checkedListBox3";
+            checkedListBox3.Size = new Size(180, 70);
+
             checkedListBox3.Location = new Point(278, 42);
             checkedListBox3.Name = "checkedListBox3";
             checkedListBox3.Size = new Size(180, 48);
+
             checkedListBox3.TabIndex = 42;
             checkedListBox3.SelectedIndexChanged += checkedListBox3_SelectedIndexChanged;
             // 
@@ -141,8 +152,13 @@
             // label5
             // 
             label5.AutoSize = true;
+
+            label5.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(646, 149);
+
             label5.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             label5.Location = new Point(0, 42);
+
             label5.Name = "label5";
             label5.Size = new Size(260, 25);
             label5.TabIndex = 37;
@@ -151,8 +167,13 @@
             // label2
             // 
             label2.AutoSize = true;
+
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            label2.Location = new Point(29, 183);
+
             label2.Font = new Font("Perpetua", 12F);
             label2.Location = new Point(6, 77);
+
             label2.Name = "label2";
             label2.Size = new Size(82, 23);
             label2.TabIndex = 36;
@@ -161,8 +182,13 @@
             // label1
             // 
             label1.AutoSize = true;
+
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            label1.Location = new Point(29, 145);
+
             label1.Font = new Font("Perpetua", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.Location = new Point(0, 46);
+
             label1.Name = "label1";
             label1.Size = new Size(88, 23);
             label1.TabIndex = 35;
@@ -170,7 +196,11 @@
             // 
             // dateTimePicker2
             // 
+
+            dateTimePicker2.Location = new Point(165, 187);
+
             dateTimePicker2.Location = new Point(94, 77);
+
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(268, 27);
             dateTimePicker2.TabIndex = 34;
@@ -178,12 +208,30 @@
             // 
             // dateTimePicker1
             // 
+
+            dateTimePicker1.Location = new Point(165, 149);
+
             dateTimePicker1.Location = new Point(94, 44);
+
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(268, 27);
             dateTimePicker1.TabIndex = 33;
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
+
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-214, 321);
+            dataGridView1.MaximumSize = new Size(1200, 400);
+            dataGridView1.MinimumSize = new Size(1200, 400);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(1200, 400);
+            dataGridView1.TabIndex = 32;
+            // 
+
             // button6
             // 
             button6.BackColor = Color.FromArgb(35, 40, 45);

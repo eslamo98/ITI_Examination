@@ -11,8 +11,8 @@ using Examination_System.Business.Enums;
 using ExaminationSystem.Business.ExamQuestionService;
 using ExaminationSystem.Data_Access.Models;
 using ExaminationSystem.Data_Access;
-using ExaminationSystem.Presentation;
 using Examination_System.Presentation.AdminForms;
+using Examination_System.Presentation.Common;
 
 namespace Examination_System.Presentation.TeacherForms
 {
@@ -50,8 +50,16 @@ namespace Examination_System.Presentation.TeacherForms
             {
                 _exam.Marks = Convert.ToInt32(exam.Rows[0]["TotalMarks"]);
             }
-            FormExamPreview formExamPreview = new FormExamPreview(_exam);
-            formExamPreview.Show();
+            
+            FormReset();
+            General.LoadUserControl(new FormExamPerviewUC(_exam));
+            Hide();
+        }
+        private void FormReset()
+        {
+            NumChooseMultipleQuestion.Value = 0;
+            NumChooseOneQuestion.Value = 0;
+            NumChooseMultipleQuestion.Value = 0;
         }
         private void DisableNumericControls(object sender)
         {
@@ -75,8 +83,7 @@ namespace Examination_System.Presentation.TeacherForms
             if (TotalQuestionsSelected > _exam.NoOfQuestions)
             {
                 DisableNumericControls(sender);
-                MessageBox.Show($"Total questions exceeded. You can only select up to {_exam.NoOfQuestions} questions.",
-                   "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, $"Total questions exceeded. You can only select up to {_exam.NoOfQuestions} questions.").Show();
             }
         }
     }

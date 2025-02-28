@@ -1,24 +1,23 @@
-﻿using Examination_System.Business;
-using Examination_System.Business.Enums;
-using ExaminationSystem;
-using ExaminationSystem.Business.AnswerService;
-using ExaminationSystem.Business.QuestionService;
-using ExaminationSystem.Data_Access.Models;
-using Syncfusion.Windows.Forms.Tools.XPMenus;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using Examination_System.Business.Enums;
+using Examination_System.Business;
+using ExaminationSystem.Business.AnswerService;
+using ExaminationSystem.Business.QuestionService;
+using ExaminationSystem.Data_Access.Models;
+using ExaminationSystem;
+using Examination_System.Presentation.Common;
 
 namespace Examination_System.Presentation.TeacherForms
 {
-    public partial class FormManageQuestions : Form
+    public partial class FormManageQuestionsUC : UserControl
     {
         private BindingSource questionsBinding = [];
         Course selectedCourse;
@@ -26,7 +25,7 @@ namespace Examination_System.Presentation.TeacherForms
         private Dictionary<int, DataGridViewRow> editedRows = new();
         private bool isLoading = true;
 
-        public FormManageQuestions()
+        public FormManageQuestionsUC()
         {
             InitializeComponent();
             LoadCourses();
@@ -105,8 +104,7 @@ namespace Examination_System.Presentation.TeacherForms
                         }
                     }
                 }
-
-                MessageBox.Show("You can now edit the question!", "Edit Mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new ToastForm(ToastType.Info, "You can now edit the question!").Show();
             }
 
             if (columnName == "RemoveButton")
@@ -140,7 +138,7 @@ namespace Examination_System.Presentation.TeacherForms
             {
                 if (columnName.StartsWith("Answer"))
                 {
-                    MessageBox.Show("You cannot edit answers for True/False questions.", "Edit Restricted", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    new ToastForm(ToastType.Warning, "You cannot edit answers for True/False questions.").Show();
                     e.Cancel = true;
                 }
             }
@@ -174,8 +172,7 @@ namespace Examination_System.Presentation.TeacherForms
 
             if (!ValidateRow(row))
             {
-                MessageBox.Show("Please fill all required fields correctly before saving.",
-                                "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, "Please fill all required fields correctly before saving.").Show();
                 e.Cancel = true; // Prevents leaving the row if invalid
                 return;
             }
@@ -199,16 +196,14 @@ namespace Examination_System.Presentation.TeacherForms
 
             if ((questionType == "True & False" || questionType == "Single Choice") && correctAnswersCount != 1)
             {
-                MessageBox.Show("True/False questions must have exactly one correct answer.",
-                                "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, "True/False questions must have exactly one correct answer.").Show();
                 e.Cancel = true;
                 return;
             }
 
             if ((questionType == "Multiple Choice") && correctAnswersCount < 1)
             {
-                MessageBox.Show($"{questionType} questions must have at least one correct answer.",
-                                "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, $"{questionType} questions must have at least one correct answer.").Show();
                 e.Cancel = true;
                 return;
             }
@@ -265,12 +260,12 @@ namespace Examination_System.Presentation.TeacherForms
 
             if (success)
             {
-                MessageBox.Show("Changes saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new ToastForm(ToastType.Success, "Changes saved successfully!").Show();
                 editedRows.Remove(row.Index); // Mark row as saved
             }
             else
             {
-                MessageBox.Show("Error saving changes.", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new ToastForm(ToastType.Error, "Error saving changes.").Show();
             }
         }
         private bool ValidateRow(DataGridViewRow row)
@@ -314,7 +309,7 @@ namespace Examination_System.Presentation.TeacherForms
             {
                 selectedTypes.Remove(QuestionType.SingleChoice);
             }
-            return selectedTypes; 
+            return selectedTypes;
         }
         private void LoadCourses()
         {
@@ -325,8 +320,7 @@ namespace Examination_System.Presentation.TeacherForms
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            FormAddQuestionWithAnswers formAddQuestionWithAnswers = new FormAddQuestionWithAnswers();
-            formAddQuestionWithAnswers.Show();
+            General.LoadUserControl(new FormAddQuestionWithAnswersUS());
             Hide();
         }
         private void cmbCourseName_SelectedIndexChanged(object sender, EventArgs e)
@@ -355,5 +349,41 @@ namespace Examination_System.Presentation.TeacherForms
             isLoading = false;
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            General.LoadUserControl(new FormAddQuestionWithAnswersUS());
+            Hide();
+        }
+
+        private void TrueFalseQuestion_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MultiChoiceType_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OneChoiceType_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbCourseName_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvQuestions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            //WelcomeUS w = new WelcomeUS();
+            //General.LoadUserControl(w);
+        }
     }
 }

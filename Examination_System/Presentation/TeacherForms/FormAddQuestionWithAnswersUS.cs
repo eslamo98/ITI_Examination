@@ -11,6 +11,7 @@ using Examination_System.Business.Enums;
 using Examination_System.Business;
 using ExaminationSystem.Business.QuestionAnswerService;
 using ExaminationSystem.Data_Access.Models;
+using Examination_System.Presentation.Common;
 
 namespace Examination_System.Presentation.TeacherForms
 {
@@ -74,7 +75,7 @@ namespace Examination_System.Presentation.TeacherForms
                             AutoSizeMode = AutoSizeMode.GrowAndShrink
                         };
 
-                        btnAddAnswer = new Button() { Text = "Add Answer", Width = 100, Dock = DockStyle.Bottom, Height = 30 };
+                        btnAddAnswer = new Button() { Text = "Add Answer", Width = 80, BackColor = Color.Black, ForeColor = Color.White, Dock = DockStyle.Bottom, Height = 40 };
                         btnAddAnswer.Click += BtnAddAnswer_Click;
 
                         AnswerPanel.Controls.Clear();
@@ -131,7 +132,7 @@ namespace Examination_System.Presentation.TeacherForms
             answerRow.Controls.Add(txtAnswer);
 
 
-            Button btnDelete = new Button() { Text = "X", Width = 30, BackColor = Color.Red, ForeColor = Color.White, Height = 30 };
+            Button btnDelete = new Button() { Text = "x", Width = 30, BackColor = Color.DarkRed, ForeColor = Color.White, Height = 30 };
             btnDelete.Click += (s, ev) =>
             {
                 MCQAnswerPanel.Controls.Remove(answerRow);
@@ -151,7 +152,6 @@ namespace Examination_System.Presentation.TeacherForms
 
             if (question == null || question.AnswerList.Count == 0)
             {
-                //MessageBox.Show("Please enter a valid question and at least one answer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -159,12 +159,12 @@ namespace Examination_System.Presentation.TeacherForms
 
             if (success)
             {
-                MessageBox.Show("Question saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new ToastForm(ToastType.Success, "Question saved successfully!").Show();
                 ResetForm();
             }
             else
             {
-                MessageBox.Show("Failed to save question.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new ToastForm(ToastType.Error, "Failed to save question.").Show();
             }
         }
         private void ResetForm()
@@ -201,7 +201,7 @@ namespace Examination_System.Presentation.TeacherForms
                         }
                         else
                         {
-                            MessageBox.Show("Please select True or False.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            new ToastForm(ToastType.Warning, "Please select True or False.").Show();
                             return [];
                         }
                     }
@@ -243,13 +243,13 @@ namespace Examination_System.Presentation.TeacherForms
                         // Ensure at least two answers are provided
                         if (answers.Count < 2)
                         {
-                            MessageBox.Show("Please add at least two answers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            new ToastForm(ToastType.Warning, "Please add at least two answers.").Show();
                             return [];
                         }
                         // Ensure at least one correct answer is selected
                         if (!hasCorrectAnswer)
                         {
-                            MessageBox.Show("Please select at least one correct answer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            new ToastForm(ToastType.Warning, "Please select at least one correct answer.").Show();
                             return [];
                         }
                     }
@@ -259,21 +259,23 @@ namespace Examination_System.Presentation.TeacherForms
         }
         private Question GetQuestionFromUI()
         {
+            if (cmbCourseName.SelectedItem is not Course selectedCourse)
+            {
+                new ToastForm(ToastType.Warning, "Please select a course.").Show();
+                return null;
+            }
+
             if (cmbQuestionTypes.SelectedItem is null)
             {
-                MessageBox.Show("Please select a question type.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, "Please select a question type.").Show();
                 return null;
             }
             QuestionType selectedType = (QuestionType)cmbQuestionTypes.SelectedItem;
 
-            if (cmbCourseName.SelectedItem is not Course selectedCourse)
-            {
-                MessageBox.Show("Please select a course.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return null;
-            }
+
             if (string.IsNullOrWhiteSpace(txtQuestionBody.Text))
             {
-                MessageBox.Show("Please enter a question.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, "Please enter a question.").Show();
                 return null;
             }
 
@@ -292,12 +294,29 @@ namespace Examination_System.Presentation.TeacherForms
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new FormManageQuestions().Show();
+            //new FormManageQuestions().Show();
         }
 
         private void cmbCourseName_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void AnswerPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            //WelcomeUS w = new WelcomeUS();
+            //General.LoadUserControl(w);
         }
     }
 }

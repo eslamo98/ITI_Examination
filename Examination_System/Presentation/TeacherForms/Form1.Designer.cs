@@ -42,7 +42,6 @@
             checkedListBox3 = new CheckedListBox();
             Title = new Label();
             label3 = new Label();
-            btn_back = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -89,9 +88,9 @@
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label1.Location = new Point(39, 171);
             label1.Name = "label1";
-            label1.Size = new Size(129, 31);
+            label1.Size = new Size(134, 31);
             label1.TabIndex = 16;
-            label1.Text = "start date :";
+            label1.Text = "Start Date :";
             // 
             // label2
             // 
@@ -99,9 +98,9 @@
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label2.Location = new Point(49, 221);
             label2.Name = "label2";
-            label2.Size = new Size(119, 31);
+            label2.Size = new Size(122, 31);
             label2.TabIndex = 17;
-            label2.Text = "end date :";
+            label2.Text = "End Date :";
             // 
             // label5
             // 
@@ -117,7 +116,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(933, 112);
+            label6.Location = new Point(940, 123);
             label6.Name = "label6";
             label6.Size = new Size(173, 31);
             label6.TabIndex = 23;
@@ -127,7 +126,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(587, 112);
+            label7.Location = new Point(585, 123);
             label7.Name = "label7";
             label7.Size = new Size(192, 31);
             label7.TabIndex = 24;
@@ -137,9 +136,9 @@
             // 
             checkedListBox1.FormattingEnabled = true;
             checkedListBox1.Items.AddRange(new object[] { "Pending", "Started", "Finished" });
-            checkedListBox1.Location = new Point(623, 175);
+            checkedListBox1.Location = new Point(626, 186);
             checkedListBox1.Name = "checkedListBox1";
-            checkedListBox1.Size = new Size(90, 48);
+            checkedListBox1.Size = new Size(95, 70);
             checkedListBox1.TabIndex = 25;
             checkedListBox1.SelectedIndexChanged += checkedListBox1_SelectedIndexChanged;
             // 
@@ -147,9 +146,9 @@
             // 
             checkedListBox2.FormattingEnabled = true;
             checkedListBox2.Items.AddRange(new object[] { "Practice", "Final" });
-            checkedListBox2.Location = new Point(970, 175);
+            checkedListBox2.Location = new Point(973, 186);
             checkedListBox2.Name = "checkedListBox2";
-            checkedListBox2.Size = new Size(95, 26);
+            checkedListBox2.Size = new Size(103, 48);
             checkedListBox2.TabIndex = 26;
             checkedListBox2.SelectedIndexChanged += checkedListBox2_SelectedIndexChanged;
             // 
@@ -168,36 +167,25 @@
             Title.Font = new Font("Goudy Stout", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Title.Location = new Point(437, 27);
             Title.Name = "Title";
-            Title.Size = new Size(766, 39);
+            Title.Size = new Size(201, 39);
             Title.TabIndex = 28;
-            Title.Text = "Hello Teacher Number ...";
+            Title.Text = "Exams";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(160, 112);
+            label3.Location = new Point(203, 123);
             label3.Name = "label3";
             label3.Size = new Size(176, 31);
             label3.TabIndex = 29;
             label3.Text = "Date Of Exams ";
-            // 
-            // btn_back
-            // 
-            btn_back.Location = new Point(54, 44);
-            btn_back.Margin = new Padding(3, 4, 3, 4);
-            btn_back.Name = "btn_back";
-            btn_back.Size = new Size(86, 31);
-            btn_back.TabIndex = 30;
-            btn_back.Text = "back";
-            btn_back.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1436, 691);
-            Controls.Add(btn_back);
             Controls.Add(label3);
             Controls.Add(Title);
             Controls.Add(checkedListBox3);
@@ -236,6 +224,5 @@
         private CheckedListBox checkedListBox3;
         private Label Title;
         private Label label3;
-        private Button btn_back;
     }
 }

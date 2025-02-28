@@ -95,7 +95,19 @@ namespace Examination_System.Presentation.TeacherForms
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) => ApplyFilters();
         private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e) => ApplyFilters();
         private void checkedListBox3_SelectedIndexChanged(object sender, EventArgs e) => ApplyFilters();
-     
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            //new frmTeacherProfile().Show();
+        }
+
+        private void Title_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void button6_Click(object sender, EventArgs e)
         {
             this.Hide();

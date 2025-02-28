@@ -26,7 +26,7 @@ namespace Examination_System.Presentation
         private void button6_Click(object sender, EventArgs e)
         {
             this.Close();
-            new frmTeacherProfile().Show();
+            //new frmTeacherProfile().Show();
         }
     }
 }
