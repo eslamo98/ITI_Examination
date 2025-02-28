@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ss\\OneDrive\\Desktop\\LastProject\\Examination_System\\Examination_System.csproj": {}
+    "C:\\Users\\amjad\\Desktop\\New folder\\Examination-System-WF\\Examination_System\\Examination_System.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ss\\OneDrive\\Desktop\\LastProject\\Examination_System\\Examination_System.csproj": {
+    "C:\\Users\\amjad\\Desktop\\New folder\\Examination-System-WF\\Examination_System\\Examination_System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ss\\OneDrive\\Desktop\\LastProject\\Examination_System\\Examination_System.csproj",
+        "projectUniqueName": "C:\\Users\\amjad\\Desktop\\New folder\\Examination-System-WF\\Examination_System\\Examination_System.csproj",
         "projectName": "Examination_System",
-        "projectPath": "C:\\Users\\ss\\OneDrive\\Desktop\\LastProject\\Examination_System\\Examination_System.csproj",
-        "packagesPath": "C:\\Users\\ss\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ss\\OneDrive\\Desktop\\LastProject\\Examination_System\\obj\\",
+        "projectPath": "C:\\Users\\amjad\\Desktop\\New folder\\Examination-System-WF\\Examination_System\\Examination_System.csproj",
+        "packagesPath": "C:\\Users\\amjad\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\amjad\\Desktop\\New folder\\Examination-System-WF\\Examination_System\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\amjad\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -81,6 +82,10 @@
             "Microsoft.Office.Interop.Excel": {
               "target": "Package",
               "version": "[15.0.4795.1001, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[9.2.0, )"
             },
             "Syncfusion.GridHelperClasses.Windows": {
               "target": "Package",

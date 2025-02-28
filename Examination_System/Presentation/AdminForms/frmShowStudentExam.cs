@@ -35,6 +35,7 @@ namespace Examination_System.Presentation.AdminForms
             LoadQuestions(dtQuestions);
         }
 
+
         private int totalMarks;
 
         private void LoadExamDetails()
