@@ -12,7 +12,7 @@ namespace Examination_System.Business
         public static DataTable GetAllTeachers(int _role)
         {
             //Data_Access.Models.User _user = new Data_Access.Models.User() {UserRole=UserRole.Teacher};
-            SqlCommand cmd = new SqlCommand($"GetAllUsers");
+            SqlCommand cmd = new SqlCommand($"GetAllTeacher");
             cmd.Parameters.AddWithValue("@role", _role);
             cmd.CommandType = CommandType.StoredProcedure;
             DataTable dt = AdminManageTeacherRepository.select(cmd);
@@ -37,7 +37,7 @@ namespace Examination_System.Business
 
         public static DataTable GetAll_Courses()
         {
-            SqlCommand cmd = new SqlCommand($"GetAllCourses");
+            SqlCommand cmd = new SqlCommand($"getAllCourses");
            // cmd.Parameters.AddWithValue("@id", _id);
             cmd.CommandType = CommandType.StoredProcedure;
             DataTable dt = AdminManageTeacherRepository.select(cmd);

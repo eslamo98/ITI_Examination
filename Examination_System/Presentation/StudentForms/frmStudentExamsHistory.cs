@@ -93,11 +93,11 @@ namespace Examination_System.Presentation
             }
         }
 
+
         private void frmStudentExamsHistory_Load_1(object sender, EventArgs e)
         {
             LoadStudentExamsHistory();
         }
-
         private void dgvExamsHistory_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // التأكد من أن النقر ليس على رأس العمود
@@ -110,20 +110,23 @@ namespace Examination_System.Presentation
                 // التأكد من أن زر عرض النتائج مفعل (غير ReadOnly)
                 if (!dgvExamsHistory.Rows[e.RowIndex].Cells["Col_Result"].ReadOnly)
                 {
-                    // جلب رقم الطالب من General.LoggedUser.ID
+                    // جلب رقم الطالب من general.loggeduser.id
                     int studentId = General.LoggedUser.ID;
+
                     // جلب رقم الامتحان من أول عمود (نفترض أن ExamID موجود في العمود الأول)
                     int examId = Convert.ToInt32(dgvExamsHistory.Rows[e.RowIndex].Cells[0].Value);
 
-                    // فتح النموذج frmShowStudentExam وتمرير رقم الطالب ورقم الامتحان
+                    // فتح النموذج frmshowstudentexam وتمرير رقم الطالب ورقم الامتحان
                     frmShowStudentExam examResultForm = new frmShowStudentExam(studentId, examId);
                     examResultForm.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Data cannot be viewed until you finish exam");
+                    MessageBox.Show("data cannot be viewed untill you finish exam");
                 }
             }
         }
+
+
     }
 }

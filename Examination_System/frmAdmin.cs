@@ -1,5 +1,6 @@
 ﻿using Examination_System.Business;
 using Examination_System.Presentation.AdminForms;
+using Examination_System.Presentation.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,8 @@ namespace Examination_System
             lb_name.Text = General.LoggedUser.Username;
             frmAdminProfileUc.UserDataChanged += FrmAdminProfileUc_UserDataChanged;
             General.pl_mainContent = pl_content;
+            General.LoadUserControl(new WelcomeAdminControl(General.LoggedUser));
+
         }
         private void FrmAdminProfileUc_UserDataChanged(object sender, EventArgs e)
         {
@@ -36,14 +39,48 @@ namespace Examination_System
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            General.LoadUserControl(new WelcomeAdminControl(General.LoggedUser));
         }
 
-        
+
 
         private void LoadAdminProfile(object sender, EventArgs e)
         {
             General.LoadUserControl(new frmAdminProfileUc(General.LoggedUser));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            General.LoadUserControl(new frmAdminManageStudentUc());
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            General.LoadUserControl(new frmAdminManageTeachersUc());
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            General.LoadUserControl(new frmAdminReportsUc());
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            General.LoadUserControl(new frmAdminManageCoursesUc());
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            General.LoadUserControl(new frmAdminManageExamsUc());
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            UserService.Logout();
+            this.Close();
+            new ToastForm(Business.Enums.ToastType.Success, "Logged out Successfully").Show();
+            General.frmLogin.Show();
         }
     }
 }

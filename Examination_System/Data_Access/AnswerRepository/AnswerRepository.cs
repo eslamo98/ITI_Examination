@@ -36,5 +36,19 @@ namespace ExaminationSystem.Data_Access
             }
             return dataTable;
         }
+        public static bool ClearQuestionAnswers(int questionId)
+        {
+            using (SqlConnection con = new(General.connectionString))
+            {
+                using (SqlCommand cmd = new("ClearQuestionAnswers", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@QuestionID", questionId);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Examination_System;
+using ExaminationSystem.Business.StudentResultService;
 using Microsoft.Data.SqlClient;
 
 using System.Data;
@@ -8,30 +9,27 @@ namespace ExaminationSystem
 {
     public partial class Form3 : Form
     {
-         int studentid;
-        public Form3(int studentid)
+
+        private int _studentId;
+        private StudentResultService _studentResultService;
+
+        public Form3(int studentId)
         {
             InitializeComponent();
-            this.studentid = studentid;
+            _studentId = studentId;
+            _studentResultService = new StudentResultService();
         }
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            string connectionString = General.connectionString;
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand("ShowResult", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@studentid", SqlDbType.Int).Value = studentid;
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataTable table = new DataTable();
-                    adapter.Fill(table);
-                    dataGridView1.DataSource = table;
-                    textBox1.Text = $"Result Of Student Number {studentid}";
-
-                }
-            }
+            LoadStudentResults();
         }
-    }
+
+        private void LoadStudentResults()
+        {
+            dataGridView1.DataSource = _studentResultService.GetStudentResults(_studentId);
+            textBox1.Text = $"Result Of Student Number {_studentId}";
+        }
+    
+}
 }

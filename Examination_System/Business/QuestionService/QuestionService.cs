@@ -19,7 +19,7 @@ namespace ExaminationSystem.Business.QuestionService
         }
         public static QuestionList ConvertDataTableQuestionsToList(DataTable dataTable)
         {
-            QuestionList questions = new QuestionList();
+            QuestionList questions = [];
 
             foreach (DataRow row in dataTable.Rows)
             {
@@ -50,9 +50,22 @@ namespace ExaminationSystem.Business.QuestionService
         {
             return QuestionRepository.GetAllQuestions();
         }
-        //public static DataTable GetQuestionsByType(List<QuestionType> type) 
-        //{
-        //    return QuestionRepository.GetQuestionsByType(type);
-        //}
+        public static DataTable GetQuestionsWithFilters(int TeacherID, List<QuestionType>? questionTypes = null, int? CourseID = null)
+        {
+            return QuestionRepository.GetQuestionsWithFilters(TeacherID, questionTypes, CourseID);
+        }
+        public static void DisableQuestionWithID(int QuestionID)
+        {
+            QuestionRepository.DisableQuestionWithID(QuestionID);
+        }
+        public static Question GetQuestionWithID(int QuestionID)
+        {
+            return QuestionRepository.GetQuestionWithID(QuestionID);
+        }
+        public static bool UpdateQuestionWithID(int QuestionID, string body,int marks, AnswerList answers)
+        {
+            return QuestionRepository.UpdateQuestionWithID(QuestionID, body, marks, answers);
+        }
     }
+
 }

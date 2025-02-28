@@ -63,18 +63,18 @@
             // 
             // button2
             // 
-            button2.Location = new Point(891, 27);
+            button2.Location = new Point(760, 27);
             button2.Name = "button2";
-            button2.Size = new Size(147, 23);
+            button2.Size = new Size(103, 23);
             button2.TabIndex = 15;
             button2.Text = "Generate PDF";
             button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Location = new Point(652, 25);
+            button1.Location = new Point(616, 27);
             button1.Name = "button1";
-            button1.Size = new Size(177, 23);
+            button1.Size = new Size(128, 23);
             button1.TabIndex = 14;
             button1.Text = "Generate Excel File";
             button1.UseVisualStyleBackColor = true;
@@ -93,7 +93,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Sitka Text", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(387, 25);
+            label2.Location = new Point(386, 25);
             label2.Name = "label2";
             label2.Size = new Size(76, 23);
             label2.TabIndex = 12;
@@ -102,7 +102,7 @@
             // com_teachers
             // 
             com_teachers.FormattingEnabled = true;
-            com_teachers.Location = new Point(478, 25);
+            com_teachers.Location = new Point(477, 25);
             com_teachers.Name = "com_teachers";
             com_teachers.Size = new Size(121, 23);
             com_teachers.TabIndex = 11;
@@ -111,7 +111,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Sitka Text", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(155, 22);
+            label1.Location = new Point(154, 22);
             label1.Name = "label1";
             label1.Size = new Size(68, 23);
             label1.TabIndex = 10;
@@ -120,7 +120,7 @@
             // com_courses
             // 
             com_courses.FormattingEnabled = true;
-            com_courses.Location = new Point(246, 22);
+            com_courses.Location = new Point(245, 22);
             com_courses.Name = "com_courses";
             com_courses.Size = new Size(121, 23);
             com_courses.TabIndex = 9;

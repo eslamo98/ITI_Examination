@@ -9,6 +9,9 @@ namespace Examination_System.Business.Enums
     public enum ReturnForm
     {
         frmAdminProfile,
-        frmAdminManageStudents
+        frmAdminManageStudents,
+        frmAdminManageStudentsUc,
+        frmAdminManageTeachersUc,
+
     }
 }

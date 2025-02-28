@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Excel = Microsoft.Office.Interop.Excel;
 
-namespace Examination_System.Business
+namespace Examination_System.Business.AdminManageExamService
 {
     internal class AdminManageExamService
     {
@@ -161,6 +161,37 @@ namespace Examination_System.Business
             excelWorkbook.Close();
             excelApp.Quit();
         }
+
+
+
+      //filter by miltible selectors 
+
+        public static DataTable FilterExamsBySelectors(
+     int? courseId,
+     DateTime? startDate,
+     DateTime? endDate,
+     bool isFinalChecked,
+     bool isPracticeChecked)
+        {
+            DataTable dt = new DataTable();
+            using (SqlCommand cmd = new SqlCommand("FilterExamsBySelectors"))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@CourseID", (object)courseId ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@StartDate", (object)startDate ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@EndDate", (object)endDate ?? DBNull.Value);
+
+                cmd.Parameters.AddWithValue("@IsFinal", isFinalChecked ? (byte)1 : (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@IsPractice", isPracticeChecked ? (byte)0 : (object)DBNull.Value);
+
+                dt = AdminManageTeacherRepository.select(cmd);
+            }
+            return dt;
+        }
+
+
+
 
     }
 }

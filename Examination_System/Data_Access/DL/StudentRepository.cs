@@ -13,7 +13,7 @@ namespace ExaminationSystem.Data_Access
     
         public class StudentRepository
         {
-            private readonly string _connectionString = "Data Source=.;Initial Catalog=myExam;Integrated Security=True;Trust Server Certificate=True";
+        private readonly string _connectionString = General.connectionString;
 
             private DataTable ExecuteStoredProcedure(string storedProcedure, SqlParameter[] parameters = null)
             {

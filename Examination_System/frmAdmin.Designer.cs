@@ -102,6 +102,7 @@
             button8.Text = "             Logout";
             button8.TextAlign = ContentAlignment.MiddleLeft;
             button8.UseVisualStyleBackColor = true;
+            button8.Click += button8_Click;
             // 
             // panel3
             // 
@@ -150,6 +151,7 @@
             button7.Text = "            Reports";
             button7.TextAlign = ContentAlignment.MiddleLeft;
             button7.UseVisualStyleBackColor = true;
+            button7.Click += button7_Click;
             // 
             // panel7
             // 
@@ -174,6 +176,7 @@
             button6.Text = "             Courses";
             button6.TextAlign = ContentAlignment.MiddleLeft;
             button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
             // 
             // panel6
             // 
@@ -198,6 +201,7 @@
             button5.Text = "             Exams";
             button5.TextAlign = ContentAlignment.MiddleLeft;
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // panel5
             // 
@@ -222,6 +226,7 @@
             button4.Text = "             Teachers";
             button4.TextAlign = ContentAlignment.MiddleLeft;
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // panel4
             // 
@@ -246,6 +251,7 @@
             button3.Text = "             Students";
             button3.TextAlign = ContentAlignment.MiddleLeft;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // panel2
             // 
@@ -306,6 +312,8 @@
             // pl_content
             // 
             pl_content.Location = new Point(223, 4);
+            pl_content.MaximumSize = new Size(863, 562);
+            pl_content.MinimumSize = new Size(863, 562);
             pl_content.Name = "pl_content";
             pl_content.Size = new Size(863, 562);
             pl_content.TabIndex = 1;
@@ -321,6 +329,7 @@
             MaximumSize = new Size(1100, 600);
             MinimumSize = new Size(1100, 600);
             Name = "frmAdmin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAdmin";
             Load += frmAdmin_Load;
             pl_sidebar.ResumeLayout(false);

@@ -279,5 +279,25 @@ namespace Examination_System.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap online_education {
+            get {
+                object obj = ResourceManager.GetObject("online-education", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2025_02_28_at_19_07_12_0f20639f {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2025-02-28 at 19.07.12_0f20639f", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

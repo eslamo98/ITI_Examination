@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Compile Update="CombinedDateTimePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="CustomControls\CustomButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CustomControls\CustomPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="CustomControls\CustomTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="leftPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminCreateEditCourseUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminCreateUserUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminEditExamUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminManageExamsUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminManageStudentUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminManageTeachersUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminProfileUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminReportsUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminStudentCoursesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminStudentCoursesUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmAdminStudentsReportUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmShowStudentExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\frmShowStudentExamUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\AdminForms\WelcomeAdminControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\Common\ToastForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+<<<<<<< HEAD
+    <Compile Update="Presentation\StudentForms\frmShowStudentExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmStudentCourcesUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+=======
+    <Compile Update="Presentation\StudentForms\frmExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmShowStudentExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+>>>>>>> b4168ce8290b167e45a75865226e62fc512d3fee
+    <Compile Update="Presentation\StudentForms\frmStudentCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmStudentExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmStudentExamsHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmStudentProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\StudentForms\frmStudentProfileUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\Form1us.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\Form2us.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\Form3us.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\FormAddExamUc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\FormAddQuestionWithAnswersUS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\FormExamPerviewUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\FormGenerateRandomExamUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\FormInsertQuestionsToExamUs.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\FormManageQuestionsUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\frmTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\frmTeacherReport1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\frmTeacherReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Presentation\TeacherForms\WelcomeUS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Teacher_Info_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

@@ -40,6 +40,7 @@ namespace ExaminationSystem.Business.ExamService
                         FROM [FatmaLast].[dbo].[Exam]
                         where id ={id}
                 "))
+
             {
                 try
                 {

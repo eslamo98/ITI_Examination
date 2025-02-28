@@ -2,6 +2,7 @@
 using ExaminationSystem.Data_Access;
 using ExaminationSystem.Data_Access.Models;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 
 namespace ExaminationSystem.DAL.QuestionAnswerRepo
@@ -9,7 +10,6 @@ namespace ExaminationSystem.DAL.QuestionAnswerRepo
     internal static class QuestionAnswerRepository
     {
         private static string connectionString = General.connectionString;
-
         public static void AddQuestionWithAnswers(Question question, AnswerList answers)
         {
             using (var connection = new SqlConnection(connectionString))
@@ -41,6 +41,6 @@ namespace ExaminationSystem.DAL.QuestionAnswerRepo
                 }
             }
         }
- 
+
     }
 }

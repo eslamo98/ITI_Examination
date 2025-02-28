@@ -126,6 +126,10 @@ namespace Examination_System.Data_Access
                             if(user.UserRole == UserRole.Student)
                             {
                                 cmd.Parameters.AddWithValue("studentId", user.ID);
+                            } else
+                            {
+                                cmd.Parameters.AddWithValue("teacherId", user.ID);
+
                             }
                         }
                         cmd.Parameters.AddWithValue("Username", user.Username);
@@ -367,6 +371,7 @@ namespace Examination_System.Data_Access
             }
         }
 
+        
 
         public static DataTable FilterStudents(int teacherId, int courseId)
         {

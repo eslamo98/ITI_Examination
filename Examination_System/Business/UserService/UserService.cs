@@ -73,6 +73,7 @@ namespace Examination_System.Business
 
                     // Execute the query
                     Reposatory.DML(cmd);
+
                 }
 
             }
@@ -191,6 +192,7 @@ namespace Examination_System.Business
             }
             catch (Exception ex)
             {
+
 
                 throw ex;
             }

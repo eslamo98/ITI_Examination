@@ -22,17 +22,13 @@ namespace Examination_System
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmTeacherProfile t = new frmTeacherProfile();
-
-            t.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmAdminProfile a = new frmAdminProfile();
-            a.Show();
+            //this.Hide();
+            //frmAdminProfile a = new frmAdminProfile();
+            //a.Show();
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
@@ -80,8 +76,8 @@ namespace Examination_System
                     }
                     else if (result.Item2.UserRole == UserRole.Teacher)
                     {
-                        frmTeacherProfile frmTeacherProfile = new frmTeacherProfile();
-                        frmTeacherProfile.Show();
+                        frmTeacher frmTeacher = new frmTeacher();
+                        frmTeacher.Show();
                     }
                     else if (result.Item2.UserRole == UserRole.Student)
                     {

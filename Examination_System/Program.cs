@@ -1,10 +1,10 @@
+using Examination_System.CustomControls;
 using Examination_System.Presentation;
 using Examination_System.Presentation.AdminForms;
 using Examination_System.Presentation.StudentForms;
 using Examination_System.Presentation.TeacherForms;
 using ExaminationSystem;
 using ExaminationSystem.Data_Access.Models;
-using ExaminationSystem.Presentation;
 
 namespace Examination_System
 {
@@ -23,10 +23,12 @@ namespace Examination_System
 
 
 
+
             Application.Run(General.frmLogin);
             //Application.Run(new frmExam());
             //Application.Run(new frmStudentExamsHistory(20));
             //Application.Run(new frmAdminDashboard());
+
         }
     }
 }

@@ -32,6 +32,11 @@ namespace ExaminationSystem.Business.AnswerService
             }
             return answerList;
         }
+
+        public static bool ClearQuestionAnswers(int questionId)
+        {
+            return AnswerRepository.ClearQuestionAnswers(questionId);
+        }
     }
 }
 

@@ -14,14 +14,25 @@ namespace Examination_System.Presentation.AdminForms
         private int examId;
         private DataTable dtStudentAnswers;
 
+        public frmShowStudentExam( int _examId)
+        {
+            InitializeComponent();
+            examId = _examId;
+            //here you need to create a method that getExamQuestionsByExamId
+            DataTable dtQuestions = UserService.GetStudentExamQuestions(studentId, examId);
+            LoadExamDetails();
+            LoadStudentAnswers();
+            LoadQuestions(dtQuestions);
+        }
         public frmShowStudentExam(int _studentId, int _examId)
         {
             InitializeComponent();
             studentId = _studentId;
             examId = _examId;
+            DataTable dtQuestions = UserService.GetStudentExamQuestions(studentId, examId);
             LoadExamDetails();
             LoadStudentAnswers();
-            LoadQuestions();
+            LoadQuestions(dtQuestions);
         }
 
 
@@ -46,9 +57,9 @@ namespace Examination_System.Presentation.AdminForms
             dtStudentAnswers = UserService.GetStudentAnswers(studentId, examId);
         }
 
-        private void LoadQuestions()
+        private void LoadQuestions(DataTable dtQuestions)
         {
-            DataTable dtQuestions = UserService.GetStudentExamQuestions(studentId, examId);
+            
             foreach (DataRow row in dtQuestions.Rows)
             {
                 int questionId = Convert.ToInt32(row["Id"]);

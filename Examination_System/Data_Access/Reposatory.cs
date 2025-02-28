@@ -45,6 +45,11 @@ namespace Examination_System.Data_Access
 
                 throw ex;
             }
+            finally
+            {
+                if (con.State == ConnectionState.Open)
+                    con.Close();
+            }
         }
     }
 }

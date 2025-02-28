@@ -18,6 +18,7 @@ namespace Examination_System.Presentation
         {
             InitializeComponent();
             stdID = General.LoggedUser?.ID ?? 0; // تجنب الخطأ في حالة عدم تسجيل الدخول
+
             _examService = new StudentNextExamService();
         }
 
@@ -64,6 +65,7 @@ namespace Examination_System.Presentation
                 dgvStudentExams.BackgroundColor = Color.White;
                 dgvStudentExams.RowTemplate.Height = 30;
 
+
                 AddShowExamColumn();
             }
             catch (Exception ex)
@@ -82,11 +84,14 @@ namespace Examination_System.Presentation
                     Name = "Col_ExamAction",
                     HeaderText = "Exam Action",
                     Text = "Open Exam", // سيتم تغيير النص أثناء التنسيق
+
                     UseColumnTextForButtonValue = true
                 };
                 dgvStudentExams.Columns.Add(showExamColumn);
             }
+
         }
+
 
         private void dgvStudentExams_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
