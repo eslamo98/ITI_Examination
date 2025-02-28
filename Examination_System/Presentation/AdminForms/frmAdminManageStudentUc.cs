@@ -174,12 +174,17 @@ namespace Examination_System.Presentation.AdminForms
         private void btn_newstudent_Click(object sender, EventArgs e)
         {
             //new frmAdminCreateUser(ReturnForm.frmAdminManageStudents, UserRole.Student, OperationMode.Create).Show();
-            General.LoadUserControl(new frmAdminCreateUserUc( UserRole.Student, OperationMode.Create));
+            General.LoadUserControl(new frmAdminCreateUserUc(UserRole.Student, OperationMode.Create));
         }
 
         private void btn_new_teacher_Click(object sender, EventArgs e)
         {
-            General.LoadUserControl(new frmAdminCreateUserUc( UserRole.Teacher, OperationMode.Create));
+            General.LoadUserControl(new frmAdminCreateUserUc(UserRole.Teacher, OperationMode.Create));
+
+        }
+
+        private void dgv_students_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

@@ -14,7 +14,6 @@ using Examination_System.Business.Enums;
 using Examination_System.Data_Access;
 using Examination_System.Presentation.Common;
 using ExaminationSystem.Data_Access.Models;
-using ExaminationSystem.Presentation;
 using Microsoft.Data.SqlClient;
 
 namespace Examination_System.Presentation.AdminForms
@@ -399,8 +398,8 @@ namespace Examination_System.Presentation.AdminForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormAddExam formAddExam = new FormAddExam();
-            formAddExam.Show();
+            //FormAddExam formAddExam = new FormAddExam();
+            //formAddExam.Show();
         }
 
 

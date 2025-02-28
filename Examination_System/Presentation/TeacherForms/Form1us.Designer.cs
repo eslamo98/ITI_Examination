@@ -60,7 +60,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(161, 171);
+            label3.Location = new Point(29, 100);
             label3.Name = "label3";
             label3.Size = new Size(176, 31);
             label3.TabIndex = 44;
@@ -80,9 +80,9 @@
             // checkedListBox3
             // 
             checkedListBox3.FormattingEnabled = true;
-            checkedListBox3.Location = new Point(590, 205);
+            checkedListBox3.Location = new Point(719, 197);
             checkedListBox3.Name = "checkedListBox3";
-            checkedListBox3.Size = new Size(180, 92);
+            checkedListBox3.Size = new Size(180, 70);
             checkedListBox3.TabIndex = 42;
             checkedListBox3.SelectedIndexChanged += checkedListBox3_SelectedIndexChanged;
             // 
@@ -130,7 +130,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(568, 171);
+            label5.Location = new Point(646, 149);
             label5.Name = "label5";
             label5.Size = new Size(284, 31);
             label5.TabIndex = 37;
@@ -140,7 +140,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            label2.Location = new Point(48, 128);
+            label2.Location = new Point(29, 183);
             label2.Name = "label2";
             label2.Size = new Size(119, 31);
             label2.TabIndex = 36;
@@ -150,7 +150,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            label1.Location = new Point(48, 85);
+            label1.Location = new Point(29, 145);
             label1.Name = "label1";
             label1.Size = new Size(129, 31);
             label1.TabIndex = 35;
@@ -158,7 +158,7 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(133, 250);
+            dateTimePicker2.Location = new Point(165, 187);
             dateTimePicker2.Name = "dateTimePicker2";
             dateTimePicker2.Size = new Size(250, 27);
             dateTimePicker2.TabIndex = 34;
@@ -166,7 +166,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(142, 217);
+            dateTimePicker1.Location = new Point(165, 149);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(250, 27);
             dateTimePicker1.TabIndex = 33;
@@ -176,7 +176,7 @@
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(-136, 313);
+            dataGridView1.Location = new Point(-214, 321);
             dataGridView1.MaximumSize = new Size(1200, 400);
             dataGridView1.MinimumSize = new Size(1200, 400);
             dataGridView1.Name = "dataGridView1";

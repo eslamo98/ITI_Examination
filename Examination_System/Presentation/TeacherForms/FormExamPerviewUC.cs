@@ -17,11 +17,8 @@ namespace Examination_System.Presentation.TeacherForms
     {
         private Exam _exam;
         private QuestionList _questions;
-        private const int QuestionsPerPage = 10;
-        private int _currentPage = 0;
         public FormExamPerviewUC(Exam exam)
         {
-            InitializeComponent();
             InitializeComponent();
             _exam = exam;
             _questions = LoadQuestions();
@@ -43,6 +40,7 @@ namespace Examination_System.Presentation.TeacherForms
             flowPanelExamInfo.Controls.Add(CreateInfoLabel($"Total Marks: {_exam.Marks}"));
             flowPanelExamInfo.Controls.Add(CreateInfoLabel($"Exam Date: {_exam.StartTime}"));
         }
+
         private Label CreateInfoLabel(string text, bool isBold = false)
         {
             return new Label
@@ -55,14 +53,9 @@ namespace Examination_System.Presentation.TeacherForms
         private void LoadQuestionsUI()
         {
             flowPanelQuestions.Controls.Clear();
-
-            int startIndex = _currentPage * QuestionsPerPage;
-            int endIndex = Math.Min(startIndex + QuestionsPerPage, _questions.Count);
-
-            for (int i = startIndex; i < endIndex; i++)
-            {
-                Question question = _questions[i];
-
+            int i = 1;
+            foreach(Question question in _questions) 
+            { 
                 Panel questionPanel = new Panel
                 {
                     AutoSize = true,
@@ -74,7 +67,7 @@ namespace Examination_System.Presentation.TeacherForms
 
                 Label lblQuestion = new Label
                 {
-                    Text = $"{i + 1}. {question.Body}",
+                    Text = $"{i}. {question.Body}",
                     AutoSize = true,
                     Font = new Font("Arial", 12, FontStyle.Bold),
                     Margin = new Padding(10, 10, 10, 10)
@@ -119,8 +112,13 @@ namespace Examination_System.Presentation.TeacherForms
                 }
                 questionPanel.Controls.Add(answersPanel);
                 flowPanelQuestions.Controls.Add(questionPanel);
+                i++;
             }
         }
     }
 }
+
+
+
+
 

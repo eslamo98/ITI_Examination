@@ -55,7 +55,7 @@ namespace Examination_System
 
         private void button4_Click(object sender, EventArgs e)
         {
-            General.LoadUserControl(new FormManageQuestionsUS());
+            General.LoadUserControl(new FormManageQuestionsUC());
         }
 
         private void button7_Click(object sender, EventArgs e)

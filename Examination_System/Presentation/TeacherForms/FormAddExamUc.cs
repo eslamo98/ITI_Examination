@@ -11,7 +11,8 @@ using Examination_System.Business;
 using ExaminationSystem.Business.Enums;
 using ExaminationSystem.Data_Access.Models;
 using ExaminationSystem.Data_Access;
-using ExaminationSystem.Presentation;
+using Examination_System.Presentation.Common;
+using Examination_System.Business.Enums;
 
 namespace Examination_System.Presentation.TeacherForms
 {
@@ -110,17 +111,17 @@ namespace Examination_System.Presentation.TeacherForms
         {
             if (cmbCourseName.SelectedItem == null || (!rdoFinalExam.Checked && !rdoPracticeExam.Checked))
             {
-                MessageBox.Show("Please select a course and exam type.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, "Please select a course and exam type.").Show();
                 return;
             }
             if (rdoPracticeExam.Checked && combinedDateTimePickerEnd.Value < combinedDateTimePickerStart.Value)
             {
-                MessageBox.Show("End date/time cannot be earlier than start date/time for practice exams.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, "End date/time cannot be earlier than start date/time for practice exams.").Show();
                 return;
             }
             if (numDuration.Value == 0)
             {
-                MessageBox.Show("Duration cannot be 0.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                new ToastForm(ToastType.Warning, "Duration cannot be 0.").Show();
                 return;
             }
             Exam newExam = new()
@@ -137,10 +138,13 @@ namespace Examination_System.Presentation.TeacherForms
             newExam.ID = createdExamId;
             if (createdExamId > 0)
             {
-                MessageBox.Show("Exam Created Successfully! Now, Add Questions.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                new ToastForm(ToastType.Success, "Exam Created Successfully! Now, Add Questions.").Show();
+                ResetForm();
                 if (sender == btnGenerateExam)
                 {
+
                     General.LoadUserControl(new FormGenerateRandomExamUC(newExam));
+                    
                 }
                 else if (sender == btnProceedToQuestions)
                 {
@@ -150,7 +154,7 @@ namespace Examination_System.Presentation.TeacherForms
             }
             else
             {
-                MessageBox.Show("Failed to create exam.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new ToastForm(ToastType.Error, "Failed to create exam.").Show();
             }
         }
         private void ResetForm()
@@ -162,6 +166,13 @@ namespace Examination_System.Presentation.TeacherForms
             combinedDateTimePickerEnd.Value = DateTime.Now;
             numDuration.Value = 1;
             UpDownNoOFQuestions.Value = 1;
+        }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            WelcomeUS w = new WelcomeUS();
+            General.LoadUserControl(w);
         }
     }
 }

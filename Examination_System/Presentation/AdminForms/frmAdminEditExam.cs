@@ -11,10 +11,10 @@ using Examination_System.Business;
 using ExaminationSystem.Business.Enums;
 using ExaminationSystem.Data_Access.Models;
 using ExaminationSystem.Data_Access;
-using ExaminationSystem.Presentation;
 using Examination_System.Business.AdminManageExamService;
 using Examination_System.Business.Enums;
 using Examination_System.Presentation.Common;
+using Examination_System.Presentation.TeacherForms;
 
 namespace Examination_System.Presentation.AdminForms
 {
@@ -227,10 +227,9 @@ namespace Examination_System.Presentation.AdminForms
 
                 if (sender == btn_EditQuestions)
                 {
-                    FormInsertQuestionsToExam formInsertQuestionsIntoExam = new FormInsertQuestionsToExam(currentExam);
-                    formInsertQuestionsIntoExam.Show();
+                    General.LoadUserControl(new FormInsertQuestionsToExamUs(currentExam));
                 }
-                this.Hide();
+                //this.Hide();
             }
             else
             {
@@ -246,7 +245,8 @@ namespace Examination_System.Presentation.AdminForms
 
         private void btn_SaveChanges_Click(object sender, EventArgs e)
         {
-            FormExamPreview examPreview = new FormExamPreview(currentExam);
+            //FormExamPreview examPreview = new FormExamPreview(currentExam);
+            General.LoadUserControl(new FormExamPerviewUC(currentExam));
             if (currentExam.StartTime <= DateTime.Now )
             {
                 toastForm = new ToastForm(ToastType.Error, "You cannot delete an exam that has already ended.");
@@ -291,9 +291,8 @@ namespace Examination_System.Presentation.AdminForms
 
                     if (sender == btn_EditQuestions)
                     {
-                        FormInsertQuestionsToExam formInsertQuestionsIntoExam = new FormInsertQuestionsToExam(currentExam);
-                        formInsertQuestionsIntoExam.Show();
-                    }
+                    General.LoadUserControl(new FormInsertQuestionsToExamUs(currentExam));
+                }
                     this.Hide();
                 }
                 else

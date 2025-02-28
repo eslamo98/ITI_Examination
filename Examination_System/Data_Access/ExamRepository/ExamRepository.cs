@@ -51,7 +51,6 @@ namespace ExaminationSystem.Data_Access
                         command.ExecuteNonQuery();
                         int createdExamID = (int)outputParam.Value;
                         transaction.Commit();
-                        MessageBox.Show($"Exam Created Successfully!\nExam ID: {createdExamID}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         return createdExamID;
 
@@ -83,7 +82,6 @@ namespace ExaminationSystem.Data_Access
             }
             catch (Exception ex)
             {
-
                 throw ex ;
             }
             finally

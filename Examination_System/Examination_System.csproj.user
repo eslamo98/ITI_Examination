@@ -145,14 +145,8 @@
     <Compile Update="Presentation\TeacherForms\Form3us.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\TeacherForms\FormAddExam.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Presentation\TeacherForms\FormAddExamUc.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\FormAddQuestionWithAnswers.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\TeacherForms\FormAddQuestionWithAnswersUS.cs">
       <SubType>UserControl</SubType>
@@ -160,49 +154,22 @@
     <Compile Update="Presentation\TeacherForms\FormExamPerviewUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\TeacherForms\FormExamPreview.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\FormGenerateRandomExam.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Presentation\TeacherForms\FormGenerateRandomExamUC.cs">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\FormInsertQuestionsToExam.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\TeacherForms\FormInsertQuestionsToExamUs.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Presentation\TeacherForms\FormManageQuestions.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\FormManageQuestionsUS.cs">
+    <Compile Update="Presentation\TeacherForms\FormManageQuestionsUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Presentation\TeacherForms\frmTeacher.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\frmTeacherDashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\frmTeacherManageExam.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\frmTeacherManageStudents.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\frmTeacherProfile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\TeacherForms\frmTeacherReport1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Presentation\TeacherForms\frmTeacherReports.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Presentation\TeacherForms\UserControlTryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Teacher_Info_Report.cs">

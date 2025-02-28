@@ -87,7 +87,7 @@ namespace Examination_System.Presentation.TeacherForms
         private void btn_back_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new frmTeacherProfile().Show();
+            //new frmTeacherProfile().Show();
         }
 
     }
