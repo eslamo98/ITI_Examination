@@ -19,7 +19,7 @@ namespace Examination_System.Presentation.AdminForms
 
         private void button6_Click(object sender, EventArgs e)
         {
-            new frmAdminDashboard().Show();
+            //new frmAdminDashboard().Show();
 
         }
 
