@@ -37,7 +37,9 @@ namespace ExaminationSystem.Business.ExamService
       ,[NoOFQuestions]
       ,[Duration]
       ,[TotalMarks]
-        FROM [FatmaLast].[dbo].[Exam]"))
+        FROM [FatmaLast].[dbo].[Exam]
+        where id ={id}
+"))
             {
                 try
                 {

@@ -48,6 +48,40 @@ namespace Examination_System.Business
 
             return dtStudentAnswers;
         }
+
+        public static void SubmitAnswer(int studentId, int examId, int questionId, int answerId)
+        {
+            try
+            {
+                // SQL query to insert the student's answer into the Submit table
+                string query = @"
+                    INSERT INTO Submit (studentId, ExamId, QuestionId, AnswerId)
+                    VALUES (@studentId, @examId, @questionId, @answerId)";
+
+                // Parameters for the query
+                SqlParameter[] parameters =
+                {
+                    new SqlParameter("@studentId", studentId),
+                    new SqlParameter("@examId", examId),
+                    new SqlParameter("@questionId", questionId),
+                    new SqlParameter("@answerId", answerId)
+                };
+                using (SqlConnection con = new SqlConnection(General.connectionString))
+                {
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddRange(parameters);
+
+                // Execute the query
+                Reposatory.DML(cmd);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions (e.g., log the error or throw it)
+                throw new Exception("Failed to submit answer: " + ex.Message);
+            }
+        }
         public static Tuple<int, User> Login(string usernameOrEmail, string password)
         {
 			try
@@ -345,7 +379,19 @@ namespace Examination_System.Business
 
         public static DataTable GetStudentExamQuestions(int studentId, int examId)
         {
-            SqlCommand cmd = new SqlCommand($"select distinct Q.*, Eq.ExamID from Questions Q\r\n\tjoin ExamQuestion EQ\r\n\ton Q.id = EQ.QuestionID\r\n\tjoin StudentCourses SC\r\n\ton Q.CourseID = SC.CourseID\r\nwhere sc.StudentID = {studentId} and EQ.ExamID = {examId}");
+            string query = @"SELECT DISTINCT Q.*, EQ.ExamID 
+                     FROM Questions Q
+                     JOIN ExamQuestion EQ ON Q.ID = EQ.QuestionID
+                     JOIN StudentCourses SC ON Q.CourseID = SC.CourseID
+                     JOIN Exam E ON EQ.ExamID = E.ID
+                     WHERE SC.StudentID = @studentId 
+                     AND EQ.ExamID = @examId 
+                     ";  // Ensure the exam is active (assuming 1 = active)
+
+            SqlCommand cmd = new SqlCommand(query);
+            cmd.Parameters.AddWithValue("@studentId", studentId);
+            cmd.Parameters.AddWithValue("@examId", examId);
+
             return UserRepository.UserDAL(cmd);
         }
 
