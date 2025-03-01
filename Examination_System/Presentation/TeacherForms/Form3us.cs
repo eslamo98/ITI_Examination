@@ -35,5 +35,13 @@ namespace Examination_System.Presentation.TeacherForms
             dataGridView1.DataSource = _studentResultService.GetStudentResults(_studentId);
             textBox1.Text = $"Result Of Student Number {_studentId}";
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form2us form2us = new Form2us();
+            General.LoadUserControl(form2us);
+
+        }
     }
 }

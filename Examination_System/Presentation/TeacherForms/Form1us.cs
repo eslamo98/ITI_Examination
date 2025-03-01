@@ -13,7 +13,9 @@ namespace Examination_System.Presentation.TeacherForms
 {
     public partial class Form1us : UserControl
     {
-        int login_id = 11;
+        //int login_id = 11;
+        int login_id = General.LoggedUser.ID;
+
         int gendervalue;
         ExamService _examService;
 
@@ -33,7 +35,7 @@ namespace Examination_System.Presentation.TeacherForms
             dateTimePicker2.Checked = false;
             checkedListBox3.Items.Add("All");
             LoadCourses();
-            Title.Text = $"Hello Teacher Number {login_id}";
+
         }
         private void LoadCourses()
         {
@@ -93,20 +95,12 @@ namespace Examination_System.Presentation.TeacherForms
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) => ApplyFilters();
         private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e) => ApplyFilters();
         private void checkedListBox3_SelectedIndexChanged(object sender, EventArgs e) => ApplyFilters();
-        private void btn_back_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new frmTeacherProfile().Show();
-        }
-
-        private void Title_Click(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void button6_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            WelcomeUS w = new WelcomeUS();
+            General.LoadUserControl(w);
         }
     }
 }

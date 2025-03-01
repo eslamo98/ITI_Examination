@@ -3599,11 +3599,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Iti\\Windows Forms\\Project\\Examination\\Examination_System\\Examination_System\\Examination_System.csproj",
+      "projectUniqueName": "C:\\Users\\ffh\\Desktop\\Project_lastUpdate\\Examination_System\\Examination_System.csproj",
       "projectName": "Examination_System",
-      "projectPath": "D:\\Iti\\Windows Forms\\Project\\Examination\\Examination_System\\Examination_System\\Examination_System.csproj",
+      "projectPath": "C:\\Users\\ffh\\Desktop\\Project_lastUpdate\\Examination_System\\Examination_System.csproj",
       "packagesPath": "C:\\Users\\ffh\\.nuget\\packages\\",
-      "outputPath": "D:\\Iti\\Windows Forms\\Project\\Examination\\Examination_System\\Examination_System\\obj\\",
+      "outputPath": "C:\\Users\\ffh\\Desktop\\Project_lastUpdate\\Examination_System\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
